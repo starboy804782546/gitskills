@@ -1,0 +1,106 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #0066A8;
+	font-family: "微软雅黑";
+}
+
+.outlayer {
+	margin: auto;
+	height: 470px;
+	width: 600px;
+}
+a:hover {
+	background-color: #333;
+}
+#user {
+	height: 20px;
+	width: 220px;
+	background-image: url(../img/input_icon_1.png);
+	background-repeat: no-repeat;
+	background-position: 205px center;
+	border: 1px solid #C1C1C1;
+	font-size: 12px;
+}
+#password {
+	height: 20px;
+	width: 220px;
+	background-image: url(../img/input_icon_2.png);
+	background-repeat: no-repeat;
+	background-position: 205px center;
+	border: 1px solid #C1C1C1;
+}
+
+.loadingButton {
+	height: 35px;
+	width: 225px;
+	text-align: center;
+	display: block;
+	line-height: 35px;
+	color: #FFF;
+	background-color: #666;
+	text-decoration: none;
+	border-radius:5px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	border-width: 0;
+	cursor:pointer;
+
+}
+
+.outlayer .From {
+	float: left;
+	height: 250px;
+	width: 600px;
+	background-color: #FFF;
+}
+.outlayer .From .logo2 {
+	float: left;
+	height: 170px;
+	width: 270px;
+	padding-top: 40px;
+	padding-right: 30px;
+	padding-bottom: 40px;
+	padding-left: 30px;
+}
+.outlayer .From .From_ {
+	float: right;
+	height: 170px;
+	width: 270px;
+	margin-top: 40px;
+	font-size: 14px;
+	color: #333;
+	font-family: "微软雅黑";
+}
+.outlayer .From .errorOut {
+	float: left;
+	height: 30px;
+	width: 225px;
+	font-size: 12px;
+	color: #F00;
+	line-height: 30px;
+	text-align: center;
+	padding-right: 45px;
+}
+
+
+
+.outlayer .logo {
+	float: left;
+	height: 50px;
+	width: 600px;
+	margin-top: 100px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.outlayer .copyright {
+	float: right;
+	height: 30px;
+	width: 600px;
+	margin-top: 10px;
+	font-size: 12px;
+	line-height: 30px;
+	text-align: center;
+	color: #FFF;
+}

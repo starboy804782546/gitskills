@@ -1,0 +1,53 @@
+@charset "utf-8";
+.sy_body {
+	margin: auto;
+	width: 1100px;
+}
+/* CSS Document */
+
+.sy_table {
+	width: 510px;
+	float: left;
+	margin-top: 15px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+.table_head {
+	height: 30px;
+	width: 500px;
+	line-height: 30px;
+	background-image: url(../img/bg_4.png);
+	background-repeat: repeat;
+}
+.sy_table_padding{
+	padding-right: 5px;
+	padding-left: 5px;	
+}
+.table2 {
+	height: 25px;
+	width: 500px;
+}
+.table_right {
+	float: right;
+	line-height: 25px;
+}
+.table_left {
+	line-height: 25px;
+	float: left;
+}
+
+.bg-color_F1F1F1{
+	background-color:#F1F1F1;
+	}
+.boder_all{
+	border: 1px solid #F1F1F1;
+}
+.boder_l_r{
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #F1F1F1;
+	border-left-color: #F1F1F1;
+	}

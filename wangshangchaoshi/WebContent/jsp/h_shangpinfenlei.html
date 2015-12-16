@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网上超市销售系统</title>
+<%@ include file="h_link.jsp" %>
+<style type="text/css">
+.body {
+	margin: auto;
+	font-size: 14px;
+	width: 1118px;
+}
+body .button{
+	text-decoration: none;
+	color: #FFF;
+	font-weight: bold;
+	display: block;
+	height: 25px;
+	width: 50px;
+	line-height: 25px;
+	text-align: center;
+	background-color: #38A3DA;
+	margin-right: 10px;
+}
+.button:hover {
+	color: #FFF;
+	background-color: #16577A;
+}
+.body table tr td {
+	text-align: center;
+}
+.padding{
+	float: left;
+}
+
+
+table{
+	background-color: #CCC;
+
+}
+table td{ background:#FFF}
+.body .button1 {
+	margin-right: 5px;
+	margin-left: 5px;
+	text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<jsp:include page="/jsp/h_head.jsp"/>
+<!-- 顶部 -->     
+            
+<div id="middle">
+     <div class="left">
+     
+     <script type="text/javascript">
+var myMenu;
+window.onload = function() {
+	myMenu = new SDMenu("my_menu");
+	myMenu.init();
+};
+</script>
+
+<%@ include file="/jsp/h_LeftMenu.jsp" %>
+<!-- 引用左侧菜单 -->
+    
+</div>
+
+     </div>
+     <div class="Switch"></div>
+     <script type="text/javascript">
+	$(document).ready(function(e) {
+    	$(".Switch").click(function(){
+		$(".left").toggle();
+		});
+	});
+</script>
+
+<div class="right"  id="mainFrame">
+     
+     <div class="right_cont">
+<ul class="breadcrumb">
+  当前位置：
+  <a href="#">首页</a> <span class="divider">/</span>商品管理<a href="#"></a> <span class="divider">/</span>
+  分类管理
+</ul>
+   
+   <div class="title_right"><strong>分类管理</strong></div>  
+   </div>
+     <!-- body_stat -->
+     
+  <div class="body"><form id="form1" name="form1" method="post" action="">
+      <table width="900"  align="center" class="table table-bordered table-hover table-striped" >
+       <tr  >
+         <td width="25" height="30" ><table width="900"  align="center" class="table table-bordered table-hover table-striped" >
+           <tr></tr>
+           <tr>
+             <td colspan="3"><a href="#" class="button padding">添加</a><a href="#" class="button padding">删除</a></td>
+           </tr>
+           <tr  >
+             <td width="25" height="30" ><strong>
+               <input  id="quanxuan" type="checkbox"  onclick="onquanxuan(checkBox,quanxuan)" />
+             </strong></td>
+             <td width="571"><strong>分类名称</strong></td>
+             <td width="298"><strong>操作</strong></td>
+           </tr>
+           <tr>
+             <td><input  name="checkBox" type="checkbox" /></td>
+             <td height="25">&nbsp;</td>
+             <td ><a href="1" class="button1" >编辑 </a><span></span><a href="#" class="button1">修改</a></td>
+           </tr>
+           <tr>
+             <td colspan="3">第一页 1 2 3 4</td>
+           </tr>
+         </table>           <strong></strong></td>
+       </tr>
+      </table></form>
+</div>
+     
+     <!--body_end-->
+    </div>
+    
+<!-- 底部 -->
+<%@ include file="/jsp/h_footer.jsp" %>
+    
+    
+
+ <script>
+!function(){
+laydate.skin('molv');
+laydate({elem: '#Calendar'});
+laydate.skin('molv');
+laydate({elem: '#Calendar2'});
+}();
+ 
+</script>
+
+
+
+ 
+</body>
+</html>
+<script type="text/javascript" defer=true>
+function onquanxuan(){
+	var id=document.getElementById('quanxuan');
+	var names=document.getElementByName("checkBox");
+	if(id.checked==true){
+		alert(id.checked);
+		
+	alert("sadfsf");
+	var len=names.length;alert(len);
+	}
+	else{checkNo()}
+		
+		
+}
+function checkAll(){
+	var names=document.getElementByName('checkBox');
+	alert("sadfsf");
+	var len=names.length;alert(len);
+	if(len>0){
+		var i=0;
+		for(i=0;i<len;i++){
+				names[i].checked=true;
+			
+		}
+	}
+}
+function checkNo(){
+	var names=document.getElementByName('checkBox');
+	var len=names.length;
+	if(len>0){
+		var i=0;
+		for(i=0;i<len;i++){
+				names[i].checked=false;
+		}
+	}
+}
+</script>
