@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+
+.body {
+	margin: auto;
+	width: 1100px;
+	height: auto;
+	font-size: 14px;
+	color: #333333;
+}
+.body #form1 table {
+	margin-left: 20px;
+}
+
+.body  #yuanmima {
+	float: left;
+	height: 20px;
+	width: 370px;
+	border: 1px solid #BEBEBE;
+}
+.body  #xinmima {
+	float: left;
+	height: 20px;
+	width: 370px;
+	border: 1px solid #BEBEBE;
+}
+.body  #querenmima {
+	float: left;
+	height: 20px;
+	width: 370px;
+	border: 1px solid #BEBEBE;
+}
+.body #AlterSystemUser_Button {
+	width: 55px;
+	height: 25px;
+}
