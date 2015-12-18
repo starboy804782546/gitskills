@@ -3,6 +3,8 @@
 <%@ page import="com.shop.shangpinguanli.GongyingshangManager" %>
 <%@ page import="com.shop.shangpinguanli.FenleiManager" %>
 <%@ page import="com.shop.shangpinguanli.FenleiBean" %>
+<%@ page import="com.shop.shangpinguanli.DanweiManager" %>
+<%@ page import="com.shop.shangpinguanli.DanweiBean" %>
 <%@ page import="java.util.ArrayList" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,11 +24,14 @@
 	float: left;
 	height: 250px;
 	width: 200px;
-	background-color: #CCC;
 	}
 	.body {
 	font-size: 14px;
 	width: 1118px;
+	margin: auto;
+}
+.body .text {
+	width: 400px;
 }
 </style>
 </head>
@@ -37,9 +42,9 @@
 <!-- 顶部 -->     
             
 <div id="middle">
-     <div class="left">
+<div class="left">
      
-     <script type="text/javascript">
+  <script type="text/javascript">
 var myMenu;
 window.onload = function() {
 	myMenu = new SDMenu("my_menu");
@@ -77,79 +82,105 @@ window.onload = function() {
      	ArrayList<FenleiBean> fenlei= fenleimanager.getAll();
      	GongyingshangManager gongyingshangmanager= new GongyingshangManager();
      	ArrayList<GongyingshangBean> gongyingshang = gongyingshangmanager.getAll();
-     
-     
-     %>
+     	DanweiManager danweimanager = new DanweiManager();
+     	ArrayList<DanweiBean> danwei = danweimanager.getAll();
+%>
      <div class="body">
+     <form action="<%=request.getContextPath()%>/addshangpinServlet" method="post" enctype="multipart/form-data" >
 <table width="1118px"  border="0" class="table table-bordered" >
   <tr  >
-    <th width="20%"  >名称</th>
-    <td><input type="text" style=" margin-left: 20px;" value="" width="500px" height="25px" /></td>
+    <th width="20%" align="right" nowrap="nowrap" bgcolor="#f1f1f1"  >名称：</th>
+    <td><input type="text" style=" margin-left: 20px;" value="" class="text" name = "name"/></td>
   </tr>
   <tr>
-    <th >类别</th>
-    <td>    <select name="gongying" id="gongying" style="margin-left:20px;"  >
+    <th align="right" nowrap="nowrap" bgcolor="#f1f1f1" >类别：</th>
+    <td>    <select name="leibie" id="leibie" style="margin-left:20px;"  >
    <%for(FenleiBean fen :fenlei){ %>
-        <option value="<%=fen.getType() %>"><%=fen.getType() %></option>
+        <option value="<%=fen.getId() %>"><%=fen.getType() %></option>
         <%} %>
       </select></td>
   </tr>
   <tr>
-    <th height="180">图片</th>
-    <td> <div class="cs"  style="margin-top:75px;"><input type="file"  style="margin-left:20px;" id="file"  /></div> 
-     <div class="tu" ><center></center>
-      <img src="document.getElementById("file").value"  height="250" border="0"/> </div></td>
+    <th height="180"align="right" nowrap="nowrap" bgcolor="#f1f1f1">图片：</th>
+    <td> <div class="cs"  style="margin-top:75px;"><input type="file"  style="margin-left:20px;" id="tupian" name="file" /></div> 
+     <div class="tu" >
+      <img src=""  height="250" border="0" id="img"/><input type="button" value="显示图" onclick="xianshitu();" /> </div></td>
   </tr>
  
-    <th >售价</th>
-    <td><input  width="150px" height="25px" style=" margin-left: 20px;" /><i><b>元</b></i></td></td>
+    <th align="right" nowrap="nowrap" bgcolor="#f1f1f1">售价：</th>
+    <td><input  style=" margin-left: 20px;" name="shoujia" /><i><b> 元</b></i></td></td>
   </tr>
   <tr>
-    <th height="50">促销价</th>
-    <td><input  width="150px" style=" margin-left: 20px;" /><i><b>元</b></i></td></td>
+    <th height="50"align="right" nowrap="nowrap" bgcolor="#f1f1f1">促销价：</th>
+    <td><input  width="150px" style=" margin-left: 20px;" name="cuxiaojia"/><i><b> 元</b></i></td></td>
   </tr>
   <tr>
-    <th >供应商</th>
+  <th height="50"align="right" nowrap="nowrap" bgcolor="#f1f1f1">单位：</th>
+  <td><select name="danwei" id="danwei" style="margin-left:20px;"  >
+   <%for(DanweiBean danweis :danwei){ %>
+        <option value="<%=danweis.getNo() %>"><%=danweis.getName() %></option>
+        <%} %>
+      </select></td>
+  </tr>
+  <tr>
+  <th align="right" nowrap="nowrap" bgcolor="#f1f1f1">生产日期</td>
+  ：<td><input type="text" style=" margin-left: 20px;"value="" name="shengchanriqi" name="shengchanriqi"/> 格式如：2015-1-1</td>
+  </tr>
+  <tr>
+  <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1">保质期</td>
+  ：<td><input type="text" style=" margin-left: 20px;"value="" name="baozhiqi" name="baozhiqi" /> 天</td>
+  </tr>
+  <tr>
+    <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1" name="gongyingshang">供应商：</th>
     <td>
-      <select name="gongying" id="gongying" style="margin-left:20px;"  >
+      <select name="gongyingshang" id="gongyingshang" style="margin-left:20px;"  >
        <%for(GongyingshangBean gong :gongyingshang) {%>
-        <option value="<%=gong.getName() %>"><%=gong.getName() %></option>
+        <option value="<%=gong.getId() %>"><%=gong.getName() %></option>
       
         <%}%>
       </select>
     </td>
   </tr>
   <tr>
-    <th height="180">描述</th>
-    <td><textarea width="400" height="150" style="margin-left:20px;"></textarea></td>
+    <th height="180" align="right" nowrap="nowrap" bgcolor="#f1f1f1">描述：</th>
+    <td><textarea name="miaoshu"  style="height:175px;width:600px;margin-left:20px;"value="
+    "></textarea></td>
   </tr>
   <tr>
-   <th>关键词</th>
-    <td><input type="text" style=" margin-left: 20px;" value="" width="500px" height="25px" /></td>
+   <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 关键词：</th>
+    <td><input type="text" style=" margin-left: 20px;" value="" class="text" name="guanjianci"/> 多个关键词用英文下的逗号隔开</td>
+  </tr>
+    <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 商品时间预警：</th>
+    <td><p style="margin-left:20px">保质期剩余&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style=" margin-left: 0px; width:35px;" value="" class="text" name="timeyujing"/>
+      天（时间） 时预警</p></td>
+  </tr>
+     <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 商品数量预警：</th>
+    <td><p style="margin-left:20px">商品数量剩余&nbsp;
+<input type="text" style=" margin-left: 0px; width:35px;" value="" class="text" name="numberyujing"/>
+      件（单位） 时预警</p></td>
+  <tr>
+  <td colspan="2" align="center"><input type="submit" value="提交" style="margin-right:20px;" class="btn btn-info "/><input type="reset" value="重置" class="btn btn-info " /></td>
   </tr>
 </table>
 
-
+</form>
      
      <!--body_end-->
     </div>
     
-<!-- 底部 -->
-<%@ include file="../jsp/h_footer.jsp" %>
-    
-    
-
- <script>
+<!-- 底部 --><script>
 !function(){
 laydate.skin('molv');
 laydate({elem: '#Calendar'});
 laydate.skin('molv');
 laydate({elem: '#Calendar2'});
 }();
- function img(){
-	 var file = document.getElementById("file");
-	 return file.value;
+ function xianshitu(){
+	 var file = document.getElementById('tupian');
+	 var img = document.getElementById('img');
+	 img.src=file.value;
  }
+ 
 </script>
 
 

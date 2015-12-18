@@ -1,7 +1,7 @@
 <%@page import="com.shop.h_supplier.SupplierBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.shop.h_supplier.SupplierManager"%>
-<%@ page contentType="text/html; charset=utf-8" language="java"
+<%@ page contentType="text/html; charset=utf-8" language="java" 
 	import="java.sql.*" errorPage=""%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -158,21 +158,33 @@ body .button {
 			<ul class="breadcrumb">
 				当前位置：
 				<a href="#">首页</a>
-				<span class="divider">/</span>供应商列表
+				<span class="divider">/</span>供应商管理
 				<a href="#"></a>
-				<span class="divider">/</span> 供应商管理
+				<span class="divider">/</span> 供应商列表
 			</ul>
 
 			<div class="title_right">
-				<strong>供应商管理</strong>
+				<strong>供应商列表</strong>
 			</div>
 		</div>
 		<!-- body_stat -->
+					
+
+        </select>
+     <form id="form2" name="form2" method="post"
+			action="<%=request.getContextPath()%>/jsp/h_supplier.jsp">
+	<span style="padding-left:10px;padding-right:10px;">按供应商名称搜索</span>
+          <input name="sousuo" type="text" id="sousuo" style="width:200px; height:20px;"/>
+          <input type="submit" value="搜索" />
+        
+
+		</form>
 
 		<div class="body">
 			<form id="form1" name="form1" method="post"
 				onsubmit="return zeroCheck();"
-				action="<%=request.getContextPath()%>/typeDelete1">
+				action="<%=request.getContextPath()%>/Delete.supplier">
+				
 				<div class="li">
 					<input type="submit" class="button" style="border: 0px;" value="删除">
 				</div>
@@ -184,6 +196,16 @@ body .button {
 						class="table table-bordered table-hover table-striped">
 						<tr></tr>
 
+						<%
+							if(request.getParameter("sousuo")== null||
+								request.getParameter("sousuo").equals("")){
+								
+								SupplierManager manager = new SupplierManager();
+								ArrayList list = manager.getAll();
+							
+						%>
+
+
 						<tr>
 							<td width="25" height="30"><strong> <input
 									type="checkbox" id="quanxuan" onclick="onquanxuan()" />
@@ -193,12 +215,9 @@ body .button {
 							<td><strong>供应商电话</strong></td>
 							<td><strong>老板名</strong></td>
 							<td width="250"><strong>操作</strong></td>
-
+							
 						</tr>
-						<%
-							SupplierManager manager = new SupplierManager();
-							ArrayList list = manager.getAll();
-						%>
+						
 						<%
 							for (int i = 0; i < list.size(); i++) {
 						%>
@@ -212,8 +231,8 @@ body .button {
 							<td><%=((SupplierBean) list.get(i)).getSuperson()%></td>
 
 
-							<td><a href="#" class="button1">修改 </a><span></span><a
-								href="<%=request.getContextPath()%>/typeDelete1?id=<%=((SupplierBean) list.get(i)).getId()%>"
+							<td><a href="<%=request.getContextPath()%>/jsp/h_supplieredit.jsp?id=<%=((SupplierBean) list.get(i)).getId()%>" class="button1">修改 </a><span></span><a
+								href="<%=request.getContextPath()%>/DeleteOne.supplier?id=<%=((SupplierBean) list.get(i)).getId()%>"
 								class="button1">删除</a></td>
 						</tr>
 						<%
@@ -223,6 +242,55 @@ body .button {
 							<td colspan="6">第一页 1 2 3 4</td>
 						</tr>
 					</table>
+					
+					<%
+						}
+						else{
+							String name = request.getParameter("sousuo");
+					
+							SupplierManager manager = new SupplierManager();
+							ArrayList Onelist = manager.findOneUser(name);
+					%>
+					
+					<table width="1118" align="center"
+						class="table table-bordered table-hover table-striped">
+						<tr>
+							<td width="25" height="30"><strong> <input
+									type="checkbox" id="quanxuan" onclick="onquanxuan()" />
+							</strong></td>
+							<td width="300"><strong>供应商名称</strong></td>
+							<td width="300"><strong>供应商地址</strong></td>
+							<td><strong>供应商电话</strong></td>
+							<td><strong>老板名</strong></td>
+							<td width="250"><strong>操作</strong></td>
+							
+						</tr>
+						
+						<%
+							for (int i = 0; i < Onelist.size();i++) {
+						%>
+						<tr>
+							<td><input type="checkbox" name="checkbox"
+						
+							value="<%=((SupplierBean) Onelist.get(i)).getId()%>" /></td>
+							<td height="25"><%=((SupplierBean) Onelist.get(i)).getSuname()%></td>
+							<td><%=((SupplierBean) Onelist.get(i)).getSuaddress()%></td>
+							<td><%=((SupplierBean) Onelist.get(i)).getSutelephone()%></td>
+							<td><%=((SupplierBean) Onelist.get(i)).getSuperson()%></td>
+
+
+							<td><a href="<%=request.getContextPath()%>/jsp/h_supplieredit.jsp?id=<%=((SupplierBean) Onelist.get(i)).getId()%>" class="button1">修改 </a><span></span><a
+								href="<%=request.getContextPath()%>/DeleteOne.supplier?id=<%=((SupplierBean) Onelist.get(i)).getId()%>"
+								class="button1">删除</a></td>
+						</tr>
+						<%
+							}
+						%>
+						<tr>
+							<td colspan="6">第一页 1 2 3 4</td>
+						</tr>
+					</table>
+					<%} %>
 				</div>
 				<!--content_end-->
 			</form>

@@ -35,8 +35,26 @@ public class FenleiManager {
 		}
 		return list;
 	}
+	public ArrayList getOne(int id){
+		String sql = "select * from protype where PTon="+id+"";
+		ArrayList list = new ArrayList();
+		res = data.selectSql(sql);
+		try {
+			res.next();
+			FenleiBean type = new FenleiBean();
+			type.setId(res.getString("PTon"));
+			type.setType(res.getString("PTname"));
+			type.setDengji(res.getInt("PTdengji"));
+			type.setIsview(res.getInt("PTisview"));
+			list.add(type);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
 	public boolean deleteOne(String value){
-		//String sql="delete from supplier where SUno='"+value+"'";
 		String sql="delete from protype where PTon='"+value+"'";
 		return data.updataSql(sql);
 	}
@@ -50,8 +68,39 @@ public class FenleiManager {
 		return true;
 	}
 	public boolean addType(String name,int dengji,int isview){
-		String sql = "insert into protype(PTName,PTdengji,PTisview) values('"+name+"',"+dengji+","+isview+")";
-		data.updataSql(sql);
+	
+		String sql = "insert into protype(PTname,PTdengji,PTisview) values('"+name+"',"+dengji+","+isview+")";
+		String select = "select * from protype where PTname='"+name+"'";
+		res = data.selectSql(select);
+		try {
+			if(res.next()){
+				return false;
+			}
+			else{
+				data.updataSql(sql);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
+	public boolean editType(int id ,String name,int dengji,int isview){
+		String select = "select * from protype where PTname = '"+name+"'";
+		String sql = "UPDATE protype SET PTname='"+name+"',PTdengji="+dengji+",PTisview="+isview+" WHERE PTon="+id+"";
+		res = data.selectSql(select);
+		try {
+			if(res.next()){
+				return false;
+			}
+			else{
+				data.updataSql(sql);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return true;
 	}
 }

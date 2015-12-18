@@ -57,10 +57,13 @@ body .button {
 	text-align: left;
 	width: 1118px;
 }
+.huixian{
+line-height: 30px;
+	width:1118px;
+	color: #F00;
+	text-align: center;
+}
 </style>
-<script
-	src="<%=request.getContextPath()%>jsp/SpryAssets/SpryTabbedPanels.js"
-	type="text/javascript"></script>
 
 </head>
 
@@ -168,10 +171,10 @@ body .button {
 			FenleiManager manager = new FenleiManager();
 			ArrayList list = manager.getAll();
 		%>
-		<div class="body">
+		<div class="body"><div class="huixian"><%= request.getAttribute("xinxi")==null?"":request.getAttribute("xinxi")%></div>
 					<form id="form1" name="form1" method="post"
 						onsubmit="return zeroCheck();"
-						action="<%=request.getContextPath()%>/typeDelete">
+						action="<%=request.getContextPath()%>/typeDelete.shangpin">
 						<div class="li">
 							<input type="submit" class="button" style="border: 0px;"
 								value="删除">
@@ -187,7 +190,7 @@ body .button {
 									<td width="25" height="30"><strong> <input
 											type="checkbox" id="quanxuan" onclick="onquanxuan()" />
 									</strong></td>
-									<td width="571"><strong>分类名称</strong></td>
+									<td width="500"><strong>分类名称</strong></td>
                                     <td><strong>排序等级</strong></td>
                                     <td><strong>是否导航</strong></td>
 									<td width="250"><strong>操作</strong></td>
@@ -209,8 +212,8 @@ body .button {
                                     %>
                                     <td><%=bool%></td>
                                     
-									<td><a href="#" class="button1">修改 </a><span></span><a
-										href="<%=request.getContextPath()%>/typeDelete?id=<%=((FenleiBean) list.get(i)).getId()%>"
+									<td><a href="<%=request.getContextPath()%>/jsp/h_fenleiedit.jsp?id=<%=((FenleiBean) list.get(i)).getId()%>" class="button1">修改 </a><span></span><a
+										href="<%=request.getContextPath()%>/typeDeleteOne.shangpin?id=<%=((FenleiBean) list.get(i)).getId()%>"
 										class="button1">删除</a></td>
 								</tr>
 								<%

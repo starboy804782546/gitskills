@@ -3,12 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>网上超市销售系统</title>
-<link rel="stylesheet" href="../style/bootstrap.css" />
-<link rel="stylesheet" href="../style/css.css" />
-<script type="text/javascript" src="../js/jquery1.9.0.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/sdmenu.js"></script>
-<script type="text/javascript" src="../js/laydate/laydate.js"></script>
+<%@ include file="h_link.jsp"%>
 
 </head>
 
@@ -55,7 +50,55 @@ window.onload = function() {
    </div>
      <!-- body_stat -->
      
-     
+     <div>
+<table width="1118px"  border="1"  >
+  <tr  >
+    <th width="20%" height="51" >名称</th>
+    <td><input type="text" style=" margin-left: 20px;" value="" width="500px" height="25px" /></td>
+  </tr>
+  <tr>
+    <th height="50">类别</th>
+    <td>    <select name="gongying" id="gongying" style="margin-left:20px;"  >
+        <option>计算机科学以技术专业</option>
+        <option>数据库专业</option>
+        <option>第一小组</option>
+        <option>d</option>
+      </select></td>
+  </tr>
+  <tr>
+    <th height="180">图片</th>
+    <td> <center><div class="cs"  style="margin-top:75px;"><input type="file"  style=" margin-left: 20px;"  /></div> </center> <div class="tu" ><center></center> 图片: </center></div></td>
+  </tr>
+ 
+    <th height="50">售价</th>
+    <td><input  width="150px" height="25px" style=" margin-left: 20px;" /><i><b>元</b></i></td></td>
+  </tr>
+  <tr>
+    <th height="50">促销价</th>
+    <td><input  width="150px" height="25px" style=" margin-left: 20px;" /><i><b>元</b></i></td></td>
+  </tr>
+  <tr>
+    <th height="50">供应商</th>
+    <td>
+      <select name="gongying" id="gongying" style="margin-left:20px;"  >
+        <option>计算机科学以技术专业</option>
+        <option>数据库专业</option>
+        <option>第一小组</option>
+        <option>d</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th height="180">描述</th>
+    <td><textarea width="400" height="150"></textarea></td>
+  </tr>
+  <tr>
+   <th height="50">关键词</th>
+    <td><input type="text" style=" margin-left: 20px;" value="" width="500px" height="25px" /></td>
+  </tr>
+</table>
+
+
      
      <!--body_end-->
     </div>

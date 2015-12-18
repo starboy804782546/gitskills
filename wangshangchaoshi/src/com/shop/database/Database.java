@@ -18,9 +18,9 @@ public class Database {
 			System.out.println("驱动错");
 		}
 		try{
-			String url="jdbc:mysql://127.0.0.1:3306/chaoshi";
+			String url="jdbc:mysql://127.0.0.1:3306/chaoshi?characterEncoding=UTF-8";
 			String uname="root";
-			String passwd="root";
+			String passwd="spring";
 			con=DriverManager.getConnection(url,uname,passwd);
 			sta=con.createStatement();	
 		}catch(Exception e){
@@ -46,21 +46,25 @@ public class Database {
 			res=sta.executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println("chaxunSql 错误");
+			System.out.println("sql:\t"+sql);
 		}
 		return res;
 	}
 	public boolean updataSql(String sql){
+	
 		try {
 			ps=con.prepareStatement(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("sql错误");
+			System.out.println("sql:\t"+sql);
 			e.printStackTrace();
 		}
 		try {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("数据库更新错误：Database.java:63");
+			System.out.println("sql:\t"+sql);
 			e.printStackTrace();
 			return false;
 		}

@@ -1,6 +1,8 @@
-<%@ page contentType="text/html; charset=utf-8" language="java"
+<%@page import="com.shop.h_supplier.SupplierBean"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.shop.h_supplier.SupplierManager"%>
+<%@ page contentType="text/html; charset=utf-8" language="java" 
 	import="java.sql.*" errorPage=""%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -58,13 +60,13 @@ body .button {
 	width: 1118px;
 }
 </style>
-
+<script
+	src="<%=request.getContextPath()%>jsp/SpryAssets/SpryTabbedPanels.js"
+	type="text/javascript"></script>
 
 </head>
 
 <body>
-
-
 
 	<jsp:include page="/jsp/h_head.jsp" />
 	<!-- 顶部 -->
@@ -86,8 +88,13 @@ body .button {
 		</div>
 
 	</div>
+	<div class="Switch"></div>
 	
-	<div class="right_cont">
+
+
+	<div class="right" id="mainFrame">
+
+		<div class="right_cont">
 			<ul class="breadcrumb">
 				当前位置：
 				<a href="#">首页</a>
@@ -100,37 +107,44 @@ body .button {
 				<strong>添加供应商</strong>
 			</div>
 		</div>
-	<div id="apDiv1">
-  <form id="form2" name="form2" method="post" action="<%=request.getContextPath() %>/h_supplieradd">
-    <table width="312" border="1" cellspacing="0">
-      <tr>
-        <td width="87">供应商名称：</td>
-        <td width="168"><label for="textfield"></label>
-          <input type="text" name="SUname" id="SUname" /></td>
-      </tr>
-      <tr>
-        <td>供应商地址：</td>
-        <td><label for="select">
-          <input type="text" name="SUadress" id="SUadress" />
-        </label></td>
-      </tr>
-      <tr>
-        <td>供应商电话：</td>
-        <td><input type="text" name="SUtel" id="SUtel" /></td>
-      </tr>
-      <tr>
-        <td>联系人：        </td>
-        <td><input type="text" name="SUperson" id="SUperson" /></td>
-      </tr>
-      <tr>
-      <td height="42" colspan="2" ><p><input type="submit" value="添加" /></p>         </td>
-      </tr>
-    </table>
-  </form>
+		<!-- body_stat -->
+		
+
+        </select>
+   
+		 <div class="body"><form action = "<%=request.getContextPath() %>/SUadd.supplier" method="post" >
+     <table width="1118" align="center" class="table table-bordered table-hover table-striped">
+  <tr>
+    <td width="46%"  align="right">供应商名称：</td>
+    <td width="54%">
+      <input type="text" name="SUname" id="SUname" style="width:400px;" value=""/></td>
+  </tr>
+  
+   <tr>
+    <td width="46%"  align="right">供应商地址：</td>
+    <td width="54%">
+      <input type="text" name="SUadress" id="SUadress" style="width:400px;" value=""/></td>
+  </tr>
+  <tr>
+    <td width="46%"  align="right">供应商手机号：</td>
+    <td width="54%">
+      <input type="text" name="SUtel" id="SUtel" style="width:400px;" value=""/></td>
+  </tr>
+  <tr>
+    <td width="46%"  align="right">联系人：</td>
+    <td width="54%">
+      <input type="text" name="SUperson" id="SUperson" style="width:400px;" value=""/></td>
+  </tr>
+  
+</table>
+<div style="text-align:center; padding-top:20px" ><input type="submit"  class="button" value="添加" style="width:90px"/></div>
+</form>
 </div>
-	
-	
-	
+		<!--div1_end-->
+		
+	</div>
+	<!--body_end-->
+	</div>
 
 	<!-- 底部 -->
 	<%@ include file="/jsp/h_footer.jsp"%>
@@ -155,5 +169,3 @@ body .button {
 
 </body>
 </html>
-
-

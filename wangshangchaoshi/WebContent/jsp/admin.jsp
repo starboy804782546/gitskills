@@ -28,6 +28,9 @@ function cleanOnClick(){
 </head>
 
 <body>
+<%
+String user=request.getParameter("user")==null?"":request.getParameter("user");
+%>
 <div class="outlayer">
   <div class="logo"><img src="<%=path %>/img/logo.png" width="300" height="50" alt="" /></div>
   <div class="From">
@@ -40,7 +43,7 @@ function cleanOnClick(){
         </tr>
         <tr>
           <td height="30"><label for="user"></label>
-            <input name="user" type="text" id="user" value="" onclick="cleanOnClick();" /></td>
+            <input name="user" type="text" id="user" value="<%=user %>" onclick="cleanOnClick();" /></td>
         </tr>
         <tr>
           <td>密码：</td>
@@ -57,7 +60,7 @@ function cleanOnClick(){
         </tr>
       </table>
       </form>
-    </div>  <div class="errorOut" id = "errorDiv">
+    </div>  <div class="errorOut" id = "errorDiv"><%=request.getAttribute("xinxi")==null?"":request.getAttribute("xinxi") %>
     </div>
   </div>
   <div class="copyright">Copyright： © 2014-2015 超市公司版权所有</div>

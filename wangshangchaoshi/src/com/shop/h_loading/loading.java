@@ -42,6 +42,8 @@ public class loading extends HttpServlet{
 				isnext=res.next();
 				if(isnext==false)
 				{
+					String xinxi="用户名或密码错误";
+					req.setAttribute("xinxi", xinxi);
 					req.getRequestDispatcher("/jsp/admin.jsp").forward(req, resp);
 					return ;
 				}

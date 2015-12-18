@@ -1,35 +1,24 @@
 <%@page import="com.shop.shangpinguanli.FenleiBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.shop.shangpinguanli.FenleiManager"%>
+<%@page import="com.shop.shangpinguanli.GongyingshangManager"%>
+<%@page import="com.shop.shangpinguanli.GongyingshangBean"%>
+<%@page import="com.shop.shangpinguanli.ListManager"%>
+<%@page import="com.shop.shangpinguanli.ListBean"%>
+<%@page import="com.shop.shangpinguanli.SousuoBean"%>
 <%@ page contentType="text/html; charset=utf-8" language="java"
 	import="java.sql.*" errorPage=""%><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>网上超市销售系统</title>
 <%@ include file="h_link.jsp"%>
+<title>网上超市销售系统</title>
+
 <style type="text/css">
 .body {
 	margin: auto;
 	font-size: 14px;
 	width: 1118px;
-}
-
-body .button {
-	text-decoration: none;
-	color: #FFF;
-	display: block;
-	height: 30px;
-	width: 60px;
-	line-height: 30px;
-	text-align: center;
-	background-color: #38A3DA;
-	margin-right: 10px;
-	border-top-left-radius: 6px;border-top-right-radius: 6px;
-	font-size: 16px;
-	font-weight: bold;
-	float: left;
-	border: 0px;
 }
 
 .body .content {
@@ -46,6 +35,41 @@ body .button {
 	text-align: center;
 }
 
+body .button {
+	text-decoration: none;
+	color: #FFF;
+	display: block;
+	height: 30px;
+	width: 60px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #38A3DA;
+	margin-right: 10px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+	border: 0px;
+}
+
+.body .button2 {
+	text-decoration: none;
+	color: #FFF;
+	height: 30px;
+	width: 60px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #38A3DA;
+	font-size: 16px;
+	font-weight: bold;
+	display: inline;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
 .body .button1 {
 	margin-right: 5px;
 	margin-left: 5px;
@@ -56,6 +80,19 @@ body .button {
 	float: left;
 	text-align: left;
 	width: 1118px;
+}
+
+#mainFrame .body .sousuo {
+	height: 50px;
+	width: 1118px;
+	margin-bottom: 20px;
+	background-color: #DDD;
+	line-height: 50px;
+}
+
+#mainFrame .body .sousuo2 {
+	float: left;
+	width: auto;
 }
 </style>
 <script
@@ -165,86 +202,137 @@ body .button {
 		</div>
 		<!-- body_stat -->
 		<%
-			FenleiManager manager = new FenleiManager();
-			ArrayList list = manager.getAll();
+			FenleiManager fenleimanager = new FenleiManager();
+			GongyingshangManager gongyingshangmanager = new GongyingshangManager();
+			ArrayList fenlei = fenleimanager.getAll();
+			ArrayList gongyingshang = gongyingshangmanager.getAll();
+			ArrayList shangpinlist;
+			if (request.getAttribute("jieguo") != null) {
+				shangpinlist = (ArrayList) request.getAttribute("jieguo");
+			} else {
+			
+				SousuoBean sousuobean = new SousuoBean();
+				shangpinlist = new ListManager().sousuoGet("%%", "%%", "%%");
+			}
 		%>
 		<div class="body">
-					<form id="form1" name="form1" method="post"
-						onsubmit="return zeroCheck();"
-						action="<%=request.getContextPath()%>/typeDelete">
-						<div class="li">
-							<input type="submit" class="button" style="border: 0px;"
-								value="删除">
-						</div>
-						<div class="content">
+			<form id="sousuoform" name="sousuoform" method="post"
+				action="<%=request.getContextPath()%>/liebiaosousuo.shangpin">
+				<div class="sousuo">
+					<div class="sousuo2">
+						<span style="padding-left: 10px; padding-right: 10px;">按分类查看</span>
+						<select id="fenlei" name="fenlei" size="0"
+							style="width: 150px; height: 30px;">
+							<option value="全部">全部</option>
+							<%
+								for (int i = 0; i < fenlei.size(); i++) {
+							%>
+							<option value="<%=((FenleiBean) fenlei.get(i)).getType()%>">
+							<%=((FenleiBean) fenlei.get(i)).getType()%></option>
+							<%
+								}
+							%>
+						</select>
+					</div>
+					<div class="sousuo2">
+						<span style="padding-left: 10px; padding-right: 10px;">按供应商查看</span>
+						<select name="gongyingshang" size="0"
+							style="width: 150px; height: 30px;" id="gongyingshang"
+							name="gongyingshang">
+							<option value="全部"
+								onclick="document.getElementById('sousuoform').submit();">全部</option>
+							<%
+								for (int i = 0; i < gongyingshang.size(); i++) {
+							%>
+							<option
+								value="<%=((GongyingshangBean) gongyingshang.get(i)).getName()%>">
+								<%=((GongyingshangBean) gongyingshang.get(i)).getName()%></option>
+							<%
+								}
+							%>
+						</select>
 
-							<table width="1118" align="center"
-								class="table table-bordered table-hover table-striped">
-								<tr></tr>
+					</div>
+					<div class="sousuo2">
+						<span style="padding-left: 10px; padding-right: 10px;">按名称查找</span>
+						<input name="sousuo" type="text" id="sousuo"
+							style="width: 200px; height: 20px;" /> <a href="#"
+							 onclick="document.getElementById('sousuoform').submit();"
+							class="btn btn-info    margin-right-20">查找</a>
+					</div>
+				</div>
+			</form>
+			<form id="form1" name="form1" method="post"
+				onsubmit="return zeroCheck();"
+				action="<%=request.getContextPath()%>/deleteshangpin.shangpin">
+				<div class="li">
+					<input type="submit" class="button" style="border: 0px;" value="删除">
+				</div>
+				<div class="content">
 
-								<tr>
-									<td width="25" height="30"><strong> <input
-											type="checkbox" id="quanxuan" onclick="onquanxuan()" />
-									</strong></td>
-									<td ><strong>商品编号</strong></td>
-                                    <td><strong>商品名称</strong></td>
-                                    <td><strong>商品类别</strong></td>
-									<td width="250"><strong>操作</strong></td>
-                                   
-								</tr>
-								<%
-									for (int i = 0; i < list.size(); i++) {
-								%>
-								<tr>
-									<td><input type="checkbox" name="checkbox"
-										value="<%=((FenleiBean) list.get(i)).getId()%>" /></td>
-									<td height="25"><%=((FenleiBean) list.get(i)).getType()%></td>
-                                    <td><%=((FenleiBean) list.get(i)).getDengji()%></td>
-                                    <%
-                                    String bool;
-                                    	if(((FenleiBean) list.get(i)).getIsview()==1)
-                                    		bool="是";
-                                    	else bool="否";
-                                    %>
-                                    <td><%=bool%></td>
-                                    
-									<td><a href="#" class="button1">查看详细 </a><span></span><a href="#" class="button1">修改 </a><span></span><a
-										href="<%=request.getContextPath()%>/typeDelete?id=<%=((FenleiBean) list.get(i)).getId()%>"
-										class="button1">删除</a></td>
-								</tr>
-								<%
-									}
-								%>
-								<tr>
-									<td colspan="5">第一页 1 2 3 4</td>
-								</tr>
-							</table>
-						</div>
-						<!--content_end-->
-					</form>
+					<table width="1118" align="center"
+						class="table table-bordered table-hover table-striped">
+						<tr></tr>
 
-			</div>
-			<!--div1_end-->
-			<script>
-				function onType() {
-					var odiv1 = document.getElementById('div1');
-					var obutton = document.getElementsByName('input');
-					var odiv = document.getElementsByName('div2');
-					for (var i = 0; i < obutton.length; i++) {
-						obutton[i].index = i;
-						obutton[i].onclick = function() {
-							for (var j = 0; j < obutton.length; j++) {
-								obutton[j].className = 'button';
-								odiv[j].style.display = 'none';
+						<tr>
+							<td width="25" height="30"><strong> <input
+									type="checkbox" id="quanxuan" onclick="onquanxuan()" />
+							</strong></td>
+							<td width="45%"><strong>商品名称</strong></td>
+							<td width="20%"><strong>商品类别</strong></td>
+							<td width="20%"><strong>供应商</strong></td>
+							<td width="15%"><strong>操作</strong></td>
+
+						</tr>
+						<%
+							for (int i = 0; i < shangpinlist.size(); i++) {
+						%>
+						<tr>
+							<td><input type="checkbox" name="checkbox"
+								value="<%=((ListBean) shangpinlist.get(i)).getId()%>" /></td>
+							<td><%=((ListBean) shangpinlist.get(i)).getName()%></td>
+							<td><%=((ListBean) shangpinlist.get(i)).gettype()%></td>
+							<td><%=((ListBean) shangpinlist.get(i)).getGongyingshang()%></td>
+
+
+							<td><a href="#" class="button1">查看详细 </a><span></span><a
+								href="#" class="button1">修改 </a><span></span><a
+								href="<%=request.getContextPath()%>/deleteshangpin.shangpin?id=<%=((ListBean) shangpinlist.get(i)).getId()%>"
+								class="button1">删除</a></td>
+						</tr>
+						<%
 							}
-							this.className = 'button_active';
-							odiv[this.index].style.display = 'block';
+						%>
+						<tr>
+							<td colspan="5">第一页 1 2 3 4</td>
+						</tr>
+					</table>
+				</div>
+				<!--content_end-->
+			</form>
+
+		</div>
+		<!--div1_end-->
+		<script>
+			function onType() {
+				var odiv1 = document.getElementById('div1');
+				var obutton = document.getElementsByName('input');
+				var odiv = document.getElementsByName('div2');
+				for (var i = 0; i < obutton.length; i++) {
+					obutton[i].index = i;
+					obutton[i].onclick = function() {
+						for (var j = 0; j < obutton.length; j++) {
+							obutton[j].className = 'button';
+							odiv[j].style.display = 'none';
 						}
+						this.className = 'button_active';
+						odiv[this.index].style.display = 'block';
 					}
 				}
-			</script>
-		</div>
-		<!--body_end-->
+			}
+		</script>
+	</div>
+	<!--body_end-->
 	</div>
 
 	<!-- 底部 -->
@@ -263,6 +351,10 @@ body .button {
 			});
 		}();
 		var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+		function onSelect() {
+			var fenlei = document.getElementById('fenlei');
+			var gongyingshang = document.getElementById('gongyingshang');
+		}
 	</script>
 
 

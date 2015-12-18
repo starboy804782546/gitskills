@@ -35,7 +35,7 @@ public class h_link extends HttpServlet {
 		case "spsjfx":
 			//request.getRequestDispatcher("jsp/h_shujufenxi.jsp").forward(request, response);
 			response.sendRedirect("jsp/h_shujufenxi.jsp");
-			break;
+			break; 
 		case "h_sy":
 			response.sendRedirect("jsp/h_index.jsp");
 			//request.getRequestDispatcher("jsp/h_index.jsp").forward(request, response);
@@ -44,7 +44,32 @@ public class h_link extends HttpServlet {
 			//request.getRequestDispatcher("jsp/h_fenlei.jsp").forward(request, response);
 			response.sendRedirect("jsp/h_fenlei.jsp");
 			break;
+		case "splb":
+			//request.getRequestDispatcher("jsp/h_fenlei.jsp").forward(request, response);
+			response.sendRedirect("jsp/h_shangpin.jsp");
+			break;
+		case "dwgl":
+			//request.getRequestDispatcher("jsp/h_fenlei.jsp").forward(request, response);
+			response.sendRedirect("jsp/h_danwei.jsp");
+			break;
+		case "ggmm":
+			//request.getRequestDispatcher("jsp/h_fenlei.jsp").forward(request, response);
+			response.sendRedirect("jsp/h_AlterSystemUserPassword.jsp");
+			break;
+		case "yhgl":
+			//request.getRequestDispatcher("jsp/h_fenlei.jsp").forward(request, response);
+			response.sendRedirect("jsp/h_Adminguanli.jsp");
+			break;
+		case "jbzlgl":
+			response.sendRedirect("jsp/h_kehuguanli.jsp");
+			break;
+		case "gyslb":
+			response.sendRedirect("jsp/h_supplier.jsp");
+			break;
+		case "addgys":
+			response.sendRedirect("jsp/h_supplieradd.jsp");
 		}
+		
 
 	}
 

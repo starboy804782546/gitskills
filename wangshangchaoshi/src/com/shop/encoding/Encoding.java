@@ -44,7 +44,8 @@ public class Encoding implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 			String encoding = getEncoding();
-			if(encoding!=null)
+			response.setCharacterEncoding("utf-8");
+				request.setCharacterEncoding("utf-8"); 
 			response.setContentType(encoding);
 		chain.doFilter(request, response);
 	}

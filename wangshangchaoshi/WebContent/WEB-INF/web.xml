@@ -17,25 +17,16 @@
     <servlet-name>h_link</servlet-name>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>typeDelete</servlet-name>
-    <servlet-class>com.shop.shangpinguanli.Delete</servlet-class>
+
+<servlet>
+    <servlet-name>rukulistdel</servlet-name>
+    <servlet-class>com.shop.repertory.rukulistdel</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>typeDelete</servlet-name>
-    <url-pattern>/typeDelete</url-pattern>
+    <servlet-name>rukulistdel</servlet-name>
+    <url-pattern>/rukulist</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>typeDelete1</servlet-name>
-    <servlet-class>com.shop.h_supplier.Sudelete</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>typeDelete1</servlet-name>
-    <url-pattern>/typeDelete1</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
+    <servlet>
     <servlet-name>userloading</servlet-name>
     <servlet-class>com.shop.userloading.userloading</servlet-class>
   </servlet>
@@ -44,20 +35,62 @@
     <url-pattern>/userloading</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>UserManager</servlet-name>
-    <servlet-class>com.shop.userloading.UserManager</servlet-class>
+    <servlet-name>editcustomer</servlet-name>
+    <servlet-class>com.shop.usermanager.editcustomer</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UserManager</servlet-name>
-    <url-pattern>/register</url-pattern>
+    <servlet-name>editcustomer</servlet-name>
+    <url-pattern>/xiugaixinxi</url-pattern>
+  </servlet-mapping>
+  
+
+  <servlet>
+    <servlet-name>ShangpinguanliServlet</servlet-name>
+    <servlet-class>com.shop.shangpinguanli.ServletManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShangpinguanliServlet</servlet-name>
+    <url-pattern>*.shangpin</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>SupplierAdd</servlet-name>
-    <servlet-class>com.shop.h_supplier.SupplierAdd</servlet-class>
+    <servlet-name>AlterSystemUserPassword</servlet-name>
+    <servlet-class>com.shop.systemadmin.AlterSystemUserPassword</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SupplierAdd</servlet-name>
-    <url-pattern>/h_supplieradd</url-pattern>
+    <servlet-name>AlterSystemUserPassword</servlet-name>
+    <url-pattern>/alterUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>h_AdminAddUser</servlet-name>
+    <servlet-class>com.shop.systemadmin.AdminAddUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>h_AdminAddUser</servlet-name>
+    <url-pattern>/AdminAddUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AllServlet</servlet-name>
+    <servlet-class>com.shop.h_supplier.AllServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllServlet</servlet-name>
+    <url-pattern>*.supplier</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>typeDelete2</servlet-name>
+    <servlet-class>com.shop.usermanager.Delet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>typeDelete2</servlet-name>
+    <url-pattern>/typeDelete2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>KucunServlet</servlet-name>
+    <servlet-class>com.shop.kucun.ServletManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KucunServlet</servlet-name>
+    <url-pattern>*.kucun</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>encoding</filter-name>

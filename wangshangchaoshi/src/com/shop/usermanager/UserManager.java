@@ -81,4 +81,39 @@ public class UserManager {
 		}	
 		return list;
 	}
+	
+	public  ArrayList<User> findinformation(String User){
+		ResultSet res = null;
+		ArrayList<User> list = new ArrayList<User>();
+		Database data = new Database();
+		String sql = "select * from customer where Cname = '"+User+"'";
+		res = data.selectSql(sql);
+		try{
+			while(res.next()){	
+				User user = new User();
+				user.setZhanghao(res.getString("Cno"));
+				//user.setMima(res.getString("Cpassword"));
+				user.setXingming(res.getString("Cname"));
+				user.setDianhua(res.getString("Ctelephone"));
+				user.setDizhi(res.getString("Caddress"));
+				user.setDizhi1(res.getString("Caddress2"));
+				user.setDizhi2(res.getString("Caddress3"));
+				user.setBeizhu(res.getString("Cremark"));
+				list.add(user);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}	
+		return list;
+	}
+	
+	public boolean editinformation(String name,String tel,String adress,String adress2,String adress3,String remark){
+		Database data = new Database();
+		String sql = "UPDATE customer SET Cname = '"+name+"',Ctelephone='"+tel+"',Caddress='"+adress+"',Caddress2='"+adress2+"',Caddress3='"+adress3+"',Cremark='"+remark+"' WHERE Cname='"+name+"';";
+	//	String sql = "UPDATE supplier SET SUname='"+name+"',SUaddress="+adress+",SUtelephone="+tel+",SUPerson="+person+" WHERE SUno="+id+"";
+		data.updataSql(sql);
+		return true;
+	}
+	
 }

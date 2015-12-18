@@ -21,6 +21,12 @@
 	font-size: 14px;
 	width: 1118px;
 }
+.huixian{
+line-height: 30px;
+	width:1118px;
+	color: #F00;
+	text-align: center;
+}
 </style>
 </head>
 
@@ -67,12 +73,13 @@ window.onload = function() {
    <div class="title_right"><strong>分类管理</strong></div>  
   </div>
      <!-- body_stat -->
-     <div class="body"><form action = "" method="post">
+     <div class="body"><div class="huixian"><%=request.getAttribute("xinxi")==null?"":request.getAttribute("xinxi") %></div>
+     <form action = "<%=request.getContextPath() %>/addfenlei.shangpin" method="post" onsubmit="return isnull();">
      <table width="1119" align="center" class="table table-bordered table-hover table-striped">
   <tr>
     <td width="46%"  align="right">分类名称：</td>
     <td width="54%">
-      <input type="text" name="typename" id="typename" style="width:400px;"/></td>
+      <input type="text" name="name" id="name" style="width:400px;"/></td>
   </tr>
   <tr>
     <td align="right" height="140">排序等级：</td>
@@ -118,8 +125,15 @@ laydate({elem: '#Calendar'});
 laydate.skin('molv');
 laydate({elem: '#Calendar2'});
 }();
- 
-</script>
+ function isnull(){
+			var name = document.getElementById('name').value;
+			if (name == ""||name==null) {
+				alert("分类名称不能为空");
+				return false;
+			}
+			return true;
+		}
+	</script>
 
 
 
