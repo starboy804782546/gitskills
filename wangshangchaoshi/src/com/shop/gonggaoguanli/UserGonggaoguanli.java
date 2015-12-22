@@ -79,4 +79,27 @@ public class UserGonggaoguanli {
 		data.updataSql(sql);
 		return true;
 	}
+
+public  ArrayList<User> tengonggao() {
+		String sql = "select * from gonggao order by Gno desc limit 10";
+
+		Database data = new Database();
+		ResultSet res = data.selectSql(sql);
+		ArrayList<User> list = new ArrayList<>();
+		try {
+			while (res.next()) {
+				User user = new User();
+				user.setBianhao(res.getString("Gno"));
+				user.setNeirong(res.getString("Gnr"));
+				user.setShijian(res.getString("Gdate"));
+				user.setBiaoti(res.getString("Gbt"));
+				list.add(user);
+				//System.out.println(res.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

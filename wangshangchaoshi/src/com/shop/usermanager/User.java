@@ -4,6 +4,16 @@ public class User {
 
 	private String zhanghao, mima, xingming, dianhua, dizhi,dizhi1,dizhi2,beizhu;
 
+	private double money;
+	
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
 	public String getZhanghao() {
 		return zhanghao;
 	}

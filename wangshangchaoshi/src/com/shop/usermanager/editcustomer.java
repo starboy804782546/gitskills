@@ -46,7 +46,7 @@ public class editcustomer extends HttpServlet {
 		String cremark = request.getParameter("cremark");
 		
 		new UserManager().editinformation(cname,ctel,cadress,cadress2,cadress3,cremark);
-		response.sendRedirect("customer/xiugaixinxi.jsp");
+		response.sendRedirect("jsp/kehuziliao.jsp");
 	}
 
 }

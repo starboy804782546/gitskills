@@ -17,8 +17,7 @@
     <servlet-name>h_link</servlet-name>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
-
-<servlet>
+  <servlet>
     <servlet-name>rukulistdel</servlet-name>
     <servlet-class>com.shop.repertory.rukulistdel</servlet-class>
   </servlet>
@@ -26,7 +25,7 @@
     <servlet-name>rukulistdel</servlet-name>
     <url-pattern>/rukulist</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>userloading</servlet-name>
     <servlet-class>com.shop.userloading.userloading</servlet-class>
   </servlet>
@@ -42,8 +41,22 @@
     <servlet-name>editcustomer</servlet-name>
     <url-pattern>/xiugaixinxi</url-pattern>
   </servlet-mapping>
-  
-
+  <servlet>
+    <servlet-name>UserManager</servlet-name>
+    <servlet-class>com.shop.userloading.UserManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserManager</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>deleteall</servlet-name>
+    <servlet-class>com.shop.repertory.rukulistdelall</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteall</servlet-name>
+    <url-pattern>/deleteall</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>ShangpinguanliServlet</servlet-name>
     <servlet-class>com.shop.shangpinguanli.ServletManager</servlet-class>
@@ -84,6 +97,41 @@
     <servlet-name>typeDelete2</servlet-name>
     <url-pattern>/typeDelete2</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>typeUpd2</servlet-name>
+    <servlet-class>com.shop.h_ordersh.Shenheupd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>typeUpd2</servlet-name>
+    <url-pattern>/typeUpd2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>typeDelsh</servlet-name>
+    <servlet-class>com.shop.h_ordersh.Shenhedel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>typeDelsh</servlet-name>
+    <url-pattern>/typeDelsh</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>typeUpd</servlet-name>
+    <servlet-class>com.shop.h_order.Dingdanupd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>typeUpd</servlet-name>
+    <url-pattern>/typeUpd</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>typeDel</servlet-name>
+    <servlet-class>com.shop.h_order.Dingdandel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>typeDel</servlet-name>
+    <url-pattern>/typeDel</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>KucunServlet</servlet-name>
     <servlet-class>com.shop.kucun.ServletManager</servlet-class>
@@ -92,6 +140,17 @@
     <servlet-name>KucunServlet</servlet-name>
     <url-pattern>*.kucun</url-pattern>
   </servlet-mapping>
+    
+  <servlet>
+    <servlet-name>chongzhimoney</servlet-name>
+    <servlet-class>com.shop.usermanager.money</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>chongzhimoney</servlet-name>
+    <url-pattern>/chongzhimoney</url-pattern>
+  </servlet-mapping>
+  
+  
   <filter>
     <filter-name>encoding</filter-name>
     <filter-class>com.shop.encoding.Encoding</filter-class>
@@ -105,6 +164,6 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <welcome-file-list>
-    <welcome-file>jsp/admin.jsp</welcome-file>
+    <welcome-file>jsp/index.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

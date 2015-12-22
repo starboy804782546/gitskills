@@ -29,7 +29,7 @@ import="java.util.List"%>
 					密码:<br /> <input name="qpassword" type="password" id="qpassword"
 						style="width: 200px; height: 30px;" />
 					<div style="margin-top: 30px; font-size: 15px; margin-left: 160px;">
-						<a href="register.jsp">免费注册<br />
+						<a href="<%=request.getContextPath() %>/jsp/register.jsp">免费注册<br />
 							<div>
 								<button name="Button" type="submit"
 									style="margin-top: 30px; width: 80px; margin-left: -90px;">

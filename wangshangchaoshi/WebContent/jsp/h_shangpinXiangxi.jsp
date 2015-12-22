@@ -1,10 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="com.shop.shangpinguanli.GongyingshangBean" %>
-<%@ page import="com.shop.shangpinguanli.GongyingshangManager" %>
-<%@ page import="com.shop.shangpinguanli.FenleiManager" %>
-<%@ page import="com.shop.shangpinguanli.FenleiBean" %>
-<%@ page import="com.shop.shangpinguanli.DanweiManager" %>
-<%@ page import="com.shop.shangpinguanli.DanweiBean" %>
+
+<%@ page import="com.shop.shangpinguanli.*" %>
 <%@ page import="java.util.ArrayList" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -78,72 +74,69 @@ window.onload = function() {
    <div class="title_right"><strong>商品数据分析</strong></div>  
    </div>
      <!-- body_stat -->
-     <%FenleiManager fenleimanager=new FenleiManager();
-     	ArrayList<FenleiBean> fenlei= fenleimanager.getAll();
-     	GongyingshangManager gongyingshangmanager= new GongyingshangManager();
-     	ArrayList<GongyingshangBean> gongyingshang = gongyingshangmanager.getAll();
-     	DanweiManager danweimanager = new DanweiManager();
-     	ArrayList<DanweiBean> danwei = danweimanager.getAll();
+     <%
+     String id = request.getParameter("id")==null?"0":request.getParameter("id");
+     
+     AddshangpinManager shangpinmanager = new AddshangpinManager();
+     ArrayList<ShangpinBean> list =shangpinmanager.getOne(id);
+     if(list.size()!=0)
+     {
 %>
      <div class="body">
      <form action="<%=request.getContextPath()%>/addshangpinServlet" method="post" enctype="multipart/form-data" >
 <table width="1118px"  border="0" class="table table-bordered" >
   <tr  >
     <th width="20%" align="right" nowrap="nowrap" bgcolor="#f1f1f1"  >名称：</th>
-    <td>&nbsp;</td>
+    <td>&nbsp;<%=list.get(0).getName() %></td>
   </tr>
   <tr>
     <th align="right" nowrap="nowrap" bgcolor="#f1f1f1" >类别：</th>
-    <td>&nbsp;</td>
+    <td>&nbsp;<%=list.get(0).getLeibie() %></td>
   </tr>
   <tr>
     <th height="180"align="right" nowrap="nowrap" bgcolor="#f1f1f1">图片：</th>
     <td><div class="tu" >
-      <img src=""  height="250" border="0" id="img"/></div></td>
+      <img src="<%=list.get(0).getTupian() %>"  height="250px" width="300px"  border="0" id="img"/></div></td>
   </tr>
  
     <th align="right" nowrap="nowrap" bgcolor="#f1f1f1">售价：</th>
-    <td><i><b> 元</b></i></td></td>
-  </tr>
-  <tr>
-    <th height="50"align="right" nowrap="nowrap" bgcolor="#f1f1f1">促销价：</th>
-    <td><i><b> 元</b></i></td></td>
+    <td><i><%=list.get(0).getShoujia() %><b> 元</b></i></td></td>
   </tr>
   <tr>
   <th height="50"align="right" nowrap="nowrap" bgcolor="#f1f1f1">单位：</th>
-  <td>&nbsp;</td>
+  <td>&nbsp;<%=list.get(0).getDanwei() %></td>
   </tr>
   <tr>
   <th align="right" nowrap="nowrap" bgcolor="#f1f1f1">生产日期</td>
-  ：<td> 格式如：2015-1-1</td>
+  ：<td> <%=list.get(0).getShengchanriqi() %></td>
   </tr>
   <tr>
   <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1">保质期</td>
-  ：<td> 天</td>
+  ：<td> <%=list.get(0).getBaozhiqi() %> 天</td>
   </tr>
   <tr>
     <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1" name="gongyingshang">供应商：</th>
-    <td>&nbsp;</td>
+    <td>&nbsp;<%=list.get(0).getGongyingshang() %></td>
   </tr>
   <tr>
     <th height="180" align="right" nowrap="nowrap" bgcolor="#f1f1f1">描述：</th>
-    <td>&nbsp;</td>
+    <td>&nbsp;<%=list.get(0).getMiaoshu() %></td>
   </tr>
   <tr>
-   <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 关键词：</th>
-    <td> 多个关键词用英文下的逗号隔开</td>
+   <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 规格：</th>
+    <td> <%=list.get(0).getGuanjianci()%></td>
   </tr>
     <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 商品时间预警：</th>
-    <td><p style="margin-left:20px">保质期剩余&nbsp;&nbsp;&nbsp;&nbsp;100    &nbsp; 天（时间） 时预警</p></td>
+    <td><p style="margin-left:20px">保质期剩余&nbsp;&nbsp;&nbsp;&nbsp;<%=list.get(0).getTimeyujing() %>    &nbsp; 天（时间） 时预警</p></td>
   </tr>
      <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 商品数量预警：</th>
-    <td><p style="margin-left:20px">商品数量剩余&nbsp;100
+    <td><p style="margin-left:20px">商品数量剩余&nbsp;<%=list.get(0).getNumberyujing() %>
       件（单位） 时预警</p></td>
   <tr>
   <td colspan="2" align="center"><a href="#" class="btn btn-info">修改 </a></td>
   </tr>
 </table>
-
+<%} %>
 </form>
      
      <!--body_end-->

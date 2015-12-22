@@ -1,41 +1,51 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" pageEncoding="utf-8"
 import="java.util.List"%>
+<%@page import="com.shop.kehuziliao.KehuBean"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.shop.kehuziliao.KehuManager"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>个人中心—我的钱包</title>
-<link href="<%=request.getContextPath() %>/style/index.css" rel="stylesheet" type="text/css" />
+<%@ include file="link.jsp"%>
 </head>
-
+<SCRIPT LANGUAGE="JavaScript">  
+        function createCode(len)  
+        {  
+            var seed = new Array(  
+                    'abcdefghijklmnopqrstuvwxyz',  
+                    'ABCDEFGHIJKLMNOPQRSTUVWXYZ',  
+                    '0123456789'  
+            );               //创建需要的数据数组  
+            var idx,i;  
+            var result = '';   //返回的结果变量  
+            for (i=0; i<len; i++) //根据指定的长度  
+            {  
+                idx = Math.floor(Math.random()*3); //获得随机数据的整数部分-获取一个随机整数  
+                result += seed[idx].substr(Math.floor(Math.random()*(seed[idx].length)), 1);//根据随机数获取数据中一个值  
+            }  
+            return result; //返回随机结果  
+        }  
+  
+        function test() {  
+            var inputRandom=document.getElementById("inputRandom").value;  
+            var autoRandom=document.getElementById("autoRandom").innerHTML;  
+            if(inputRandom==autoRandom) {  
+                alert("通过验证");  
+            } else {  
+                alert("没有通过验证");  
+            }  
+  
+        }  
+    </SCRIPT>  
 <body>
 <!-- 头部开始-->
+	<%@ include file="head.jsp"%>
 
-<div class="head_top_outboard">
-  <div class="head_board">
-    <div class="denglu"><span>欢迎来到XXX网上超市！</span><p><a href="#" class="a">登录 </a>/<a href="#" class="a"> 注册</a></p></div>
-    <div class="dingdan"><a href="#">我的购物车</a></div>
-  </div>
-  <div class="logo_board">
-    <div class="logoDiv"><a href="#"><img  src="<%=request.getContextPath() %>/img/logo3.png" width="240" height="130" /></a></div>
-    <div class="sousuoDiv">
-      <div class="sousuo">
-        <form id="form1" name="form1" method="post" action="">
-          <input type="text" name="sousuo" id="sousuo" />
-        </form>
-      </div>
-      <div class="sousuobuttonDiv">
-        <a href="#">查找</a>
-      </div>
-    </div>
-    <div class="gouwucheDiv"><a href="#" class="gouwucheButton">购物车(0)</a></div>
-  </div>
-  
-</div>
-<p align="right"  ><a href="#bottom" name="top" style="margin-right:80px;"> To Bottom 去底部 ↓</a></p>
 <!-- 头部结束-->
-<div style="height:50px; background-color:#F30"></div>
-<div style=" width:1200px; margin-left:100px;">
+
+<div style=" width:1200px; margin:auto;">
  
   <div   style="height:500px; width:200px; background-color:#CCC; float:left; "  >
     <table width="200" border="1" cellpadding="5px"  cellspacing="1px;">
@@ -57,19 +67,40 @@ import="java.util.List"%>
 </div>
 <div style="height:500px;  ">
 
+
+<div style="height:500px; background-color:#FFF ">
+<!--  
+<center  ><table style="margin-top:20px;">  
+    <tr>  
+        <th>验证码：</th>  
+        <td><input type="text" id="inputRandom">(注意区分大小写！)</td>  </tr>
+        
+       <tr> <td colspan="2"><center><label id="autoRandom" value=""></label><INPUT TYPE="button" VALUE="获取验证码" ONCLICK="autoRandom.innerHTML=createCode(4)"><input type="button" value="验&nbsp;&nbsp;&nbsp;证" onclick="test()" style="margin-left:20px;"></center></td>  
+         
+    </tr>  
+  
+</table> </center> 
+<script type="text/javascript">  
+    window.onload()=autoRandom.innerHTML=createCode(sel.value);  
+</script>  -->
+					<%
+						String user = "张三";  //得在上面加<%String User= (String)session.getAttribute("User"); 
+						KehuManager manager = new KehuManager();
+						ArrayList money = manager.usermoney(user);  
+					%>
+
+<center><table border="1" style="margin-top:20px;"><tr><th style="width:300px; height:50px;">我的余额:<%=((KehuBean) money.get(0)).getMoney()%>元</th>
+<td style=" height:50px;"></td>
+</tr> </table></center> 
+
+</div>
 </div>
 </div>
 
 
 <p align="right" ><a href="#top" name="bottom" style="margin-right:80px;">返回顶部 ↑</a></p>
 <!-- 底部开始-->
-<div class="footer_out" style="height:150px;">
-<div class="footer"><br/>
-  <img src="../购物车/cxds.jpg" width="128" height="48" />
-  <img  src="../购物车/scoba.jpg" width="128" height="48" />
-  <img src="weiquan_1.jpg" width="128" height="48" />
-  <img src="weiquan_2.jpg" width="128" height="48" /> <br /><P>Copyright© xxx网上超市 2015-2016，All Rights Reserved</P></div>
-</div>
+	<%@ include file="footer.jsp"%>
 <!-- 底部结束-->
 </body>
 </html>

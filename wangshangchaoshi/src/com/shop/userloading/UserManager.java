@@ -13,12 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shop.database.Database;
+import com.shop.shangpinguanli.FenleiManager;
 
 
 public class UserManager extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(req, resp);
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 
 		Database db = new Database();
 		String no = request.getParameter("zhanghao");
@@ -27,37 +34,22 @@ public class UserManager extends HttpServlet {
 		String tel= request.getParameter("phonenumber");
 		String sql =" INSERT INTO chaoshi.customer(Cno,Cpassword,cname,Ctelephone)values('"+no+"','"+pw+"','"+name+"','"+tel+"')";
 		//String sql = "insert into shop.test(Szh,Sname,Spassword,STel) value('"+no+"','"+name+"','"+pw+"','"+tel+"')";
-		db.updataSql(sql);
-		request.getRequestDispatcher("/jsp/userloading.jsp").forward(request, response);
-//		try {
-//       
-//    			if(){
-//    				
-//    			}
-//    			else{
-//    			
-//    			}
-//    		
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}//取出res中  第一列的返回值。
-//		finally {
-//			db.closeDatabase();	//关闭数据库	
-//		}
-		//	ResultSet res =	db.selectSql(sql);
-//		try{
-//			Database con = new Database();
-//			conn = con.getCon();
-//			String sql = "insert into shop.test(Sno,Sname,Spassword,STel) value('"+no+"','"+name+"','"+pw+"','"+tel+"')";
-//			ResultSet res =	data.selectSql(sql);
-//			Statement stmt = conn.createStatement();
-//			stmt.executeupdatesql()(sql);
-//		}catch(Exception e){
-//			e.printStackTrace();
-//			System.err.println("错误1");
-//		}finally {
-//			data.closeDatabase();
-//		}
+		String xinxi;
+		if(db.updataSql(sql)){
+			
+			xinxi="注册成功";
+			request.setAttribute("xinxi",xinxi);
+		request.getRequestDispatcher("/jsp/userloading.jsp").forward(request, response);		
+		}
+		else{
+			xinxi="该账号已经被注册";
+			request.setAttribute("xinxi",xinxi);
+		//	System.out.println("此账号已被注册");
+		//	request.setAttribute("1", "Cno");
+		request.getRequestDispatcher("/jsp/register.jsp").forward(request, response);		
+
+		}
+		
 	}
 
 }

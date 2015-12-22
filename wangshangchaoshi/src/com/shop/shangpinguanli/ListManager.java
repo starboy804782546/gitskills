@@ -76,7 +76,8 @@ public class ListManager {
 		return list;
 	}
 	public ArrayList getOne(int id){
-		String sql = "SELECT produc.Pno,produc.Pname,protype.PTname,danwei.DWname,supplier.SUname from produc,protype,supplier,danwei WHERE danwei.DWno=produc.DWno and produc.PTon=protype.PTon and produc.Suno=supplier.SUno and Pno="+id+"";
+		String sql = "SELECT produc.Pno,produc.Pname,protype.PTname,danwei.DWname,supplier.SUname ,protype.PTon,supplier.SUno, danwei.DWno  from produc,protype,supplier,danwei"
+	+" WHERE danwei.DWno=produc.DWno and produc.PTon=protype.PTon and produc.Suno=supplier.SUno and Pno="+id+"";
 		res = data.selectSql(sql);
 		ArrayList<ListBean> list  = new ArrayList<ListBean>();
 		try {
@@ -87,6 +88,9 @@ public class ListManager {
 				bean.settype(res.getString("PTname"));
 				bean.setDanwei(res.getString("DWname"));
 				bean.setGongyingshang(res.getString("SUname"));
+				bean.setDanweiId(res.getInt("DWno"));
+				bean.setLeibieId(res.getInt("PTon"));
+				bean.setGongyingshangId(res.getInt("suno"));
 				list.add(bean);
 			}
 

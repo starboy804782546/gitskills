@@ -14,9 +14,18 @@ function onJudge(){
 	return true;
 	
 }
-
+function password(){
+	var xinmima=document.form1.xinmima.value;
+	
+	if(xinmima==""||xinmima==null){
+		alert("密码不能为空");
+		return false;
+	}else
+	return true;
+	
+}
 </script>
-<div class="body"><form id="form1" name="form1" method="post" action="<%=request.getContextPath() %>/alterUser" onsubmit="return onJudge();">
+<div class="body"><form id="form1" name="form1" method="post" action="<%=request.getContextPath() %>/alterUser" onsubmit="return onJudge()&&password();">
   <table width="385">
     <tr>
       <td>原密码：</td>

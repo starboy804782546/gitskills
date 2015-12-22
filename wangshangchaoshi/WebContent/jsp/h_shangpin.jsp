@@ -295,7 +295,7 @@ body .button {
 							<td><%=((ListBean) shangpinlist.get(i)).getGongyingshang()%></td>
 
 
-							<td><a href="#" class="button1">查看详细 </a><span></span><a
+							<td><a href="<%=request.getContextPath() %>/jsp/h_shangpinXiangxi.jsp?id=<%=((ListBean) shangpinlist.get(i)).getId()%>" class="button1">查看详细 </a><span></span><a
 								href="#" class="button1">修改 </a><span></span><a
 								href="<%=request.getContextPath()%>/deleteshangpin.shangpin?id=<%=((ListBean) shangpinlist.get(i)).getId()%>"
 								class="button1">删除</a></td>

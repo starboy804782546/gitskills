@@ -16,7 +16,14 @@ public class RepertoryBean {
 	private String PTname;
 	private String SUname;
 	private String Aname;
+	private String rdate;
 	
+	public String getRdate() {
+		return rdate;
+	}
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
+	}
 	private String DWname;
 	
 	public String getDWname() {

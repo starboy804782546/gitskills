@@ -8,6 +8,7 @@
 <%@ page import="com.shop.shangpinguanli.ListBean" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="com.shop.kucun.GetSystemUserID" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -89,37 +90,37 @@ window.onload = function() {
      	
 %>
      <div class="body">
-     <form action="<%=request.getContextPath()%>/addshuliang.kucun " method="post" enctype="multipart/form-data" ><table width="1118px"  border="0" class="table table-bordered" >
+     <form action="<%=request.getContextPath()%>/addshuliang.kucun " method="post" ><table width="1118px"  border="0" class="table table-bordered" >
      <tr>
      <th>商品编号</th>
-     <td><input type="text" name="id" value="<%=request.getParameter("id") %>" disabled="disabled" /></td>
+     <td><input type="text" name="id" value="<%=request.getParameter("id") %>"  readonly="true" /></td>
      </tr>
   <tr  >
     <th width="20%" align="right" nowrap="nowrap" bgcolor="#f1f1f1"  >商品名称：</th>
-    <td><p><%=((ListBean)shangpinList.get(0)).getName()%></p></td>
+    <td><p><%=((ListBean)shangpinList.get(0)).getName()%><input type="text" name="shangpinId" value="<%=((ListBean)shangpinList.get(0)).getId()%>"  style="display:none;"/></p></td>
   </tr>
   <tr>
     <th  align="right" nowrap="nowrap" bgcolor="#f1f1f1" >类别：</th>
-    <td><p><%=((ListBean)shangpinList.get(0)).getType()%></p></td>
+    <td><p><%=((ListBean)shangpinList.get(0)).getType()%></p><input type="text" name="leibieid" value="<%=((ListBean)shangpinList.get(0)).getLeibieId()%>"  style="display:none;"/></td>
   </tr>
   <tr>
     <th align="right" nowrap="nowrap" bgcolor="#f1f1f1">单位：</th>
-    <td><p><%=((ListBean)shangpinList.get(0)).getDanwei()%></p></td>
+    <td><p><%=((ListBean)shangpinList.get(0)).getDanwei()%></p><input type="text" name="danweiid" value="<%=((ListBean)shangpinList.get(0)).getDanweiId()%>"  style="display:none;"/></td>
   </tr>
  
     <th  align="right" nowrap="nowrap" bgcolor="#f1f1f1">入库数量：</th>
-    <td><input  style=" margin-left: 20px;" name="number"/>
+    <td><input type="text" style=" margin-left: 20px;" name="number"/>
     <i><b> <%=((ListBean)shangpinList.get(0)).getDanwei()%></b></i></td></td>
   </tr>
     <th  align="right" nowrap="nowrap" bgcolor="#f1f1f1">进价：</th>
-    <td><input  style=" margin-left: 20px;" name="jinjia"/>
+    <td><input type="text" style=" margin-left: 20px;" name="jinjia"/>
     <i><b> 元</b></i></td>
   <tr>
     <th align="right" nowrap="nowrap" bgcolor="#f1f1f1">总金额：</th>
-    <td><input  width="170px" style=" margin-left: 20px;" name="zongjine" /><i><b> 元</b></i></td></td>
+    <td><input type="text" width="170px" style=" margin-left: 20px;" name="zongjine" /><i><b> 元</b></i></td></td>
   </tr>
      <th align="right" nowrap="nowrap" bgcolor="#f1f1f1">供应商： </th>
-    <td><p><%=((ListBean)shangpinList.get(0)).getGongyingshang()%></p></td>
+    <td><p><%=((ListBean)shangpinList.get(0)).getGongyingshang()%></p><input type="text" name="gongyingshangid" value="<%=((ListBean)shangpinList.get(0)).getGongyingshangId()%>"  style="display:none;"/></td>
   <tr>
   <th  align="right" nowrap="nowrap" bgcolor="#f1f1f1">日期
     </td>
@@ -139,7 +140,8 @@ window.onload = function() {
   </tr>
   <tr>
    <th  align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 操作员账号：</th>
-    <td><p><%= (String)session.getAttribute("systemUser")%></p></td>
+    <td><p><%= (String)session.getAttribute("systemUser")%></p>
+    <input type="text" name="caozuoyuan" value="<%=new GetSystemUserID().getSystemUserId((String)session.getAttribute("systemUser"))%>"  style="display:none;"/></td>
   </tr>
   <tr>
   <td colspan="2" align="center"><input type="submit" value="提交" style="margin-right:20px;" class="btn btn-info "/><input type="reset" value="重置" class="btn btn-info " /></td>

@@ -108,6 +108,8 @@ public class UserManager {
 		return list;
 	}
 	
+	
+	
 	public boolean editinformation(String name,String tel,String adress,String adress2,String adress3,String remark){
 		Database data = new Database();
 		String sql = "UPDATE customer SET Cname = '"+name+"',Ctelephone='"+tel+"',Caddress='"+adress+"',Caddress2='"+adress2+"',Caddress3='"+adress3+"',Cremark='"+remark+"' WHERE Cname='"+name+"';";
@@ -115,5 +117,29 @@ public class UserManager {
 		data.updataSql(sql);
 		return true;
 	}
+
+
+	public boolean chongzhimoney(String id ,Double money){
+		String sql2 = "select * from customer where cno='"+id+"'";
+		Database data = new Database();
+		ResultSet res = null;
+		boolean i = true;
+		res=data.selectSql(sql2);
+		try {
+			if(res.next()){
+				String sql = "UPDATE customer SET Cmoney = Cmoney+"+money+" WHERE Cno = '"+id+"';";
+
+			i=data.updataSql(sql);
+				
+				return i;
+			}
+			else return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
+	}
+	
 	
 }

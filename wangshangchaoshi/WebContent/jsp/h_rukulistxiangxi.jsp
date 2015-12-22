@@ -195,6 +195,8 @@ body .button {
 						<%
 							
 								String no = request.getParameter("id");
+						if(no==null)
+							response.sendRedirect("h_rukulist.jsp");
 								RepertoryManager manager = new RepertoryManager();
 								ArrayList Onelist = manager.findOne(no);
 						%>
@@ -242,6 +244,10 @@ body .button {
 							<tr >
 							<td><strong>入库备注</strong></td>
 							<td><%=((RepertoryBean) Onelist.get(i)).getBeizhu()%></td>
+							</tr>
+							<tr >
+							<td><strong>入库日期</strong></td>
+							<td><%=((RepertoryBean) Onelist.get(i)).getRdate()%></td>
 							</tr>
 							<tr >
 							<td><strong>管理员名</strong></td>

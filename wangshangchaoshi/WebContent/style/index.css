@@ -5,13 +5,15 @@ body {
 	margin: 0px;
 	padding: 0px;
 	font-size: 14px;
+	background-color: #FAF1F4;
 }
 .head_top_outboard {
 	width: 100%;
-	height: auto;
-	background-image: url(img/banner.png);
+	height: 165px;
+	background-image: url(../img/banner.png);
 	background-attachment: fixed;
 	background-repeat: repeat-x;
+	background-color: #FFF;
 }
 .head_board {
 	margin: auto;
@@ -19,6 +21,7 @@ body {
 	height: 35px;
 	line-height: 35px;
 	color: #333;
+	
 }
 .head_board .a {
 	color: #36F;
@@ -33,7 +36,7 @@ body {
 }
 
 .denglu p {
-	float: right;
+	float: left;
 	margin: 0px;
 	padding-right: 5px;
 	padding-left: 5px;
@@ -42,7 +45,7 @@ body {
 .denglu {
 	line-height: 35px;
 	float: left;
-	width: 230px;
+	width: 300px;
 }
 .denglu span {
 	float: left;
@@ -69,6 +72,10 @@ body {
 	margin: 0px;
 	padding: 0px;
 }
+.body_list {
+	margin: auto;
+}
+
 .head_top_outboard .sousuoDiv {
 	height: 90px;
 	width: 620px;
@@ -91,7 +98,7 @@ body {
 	border-top-color: #F03;
 	border-bottom-color: #F03;
 	border-left-color: #F03;
-	background-image: url(img/sousuo.png);
+	background-image: url(../img/sousuo.png);
 }
 .sousuoDiv .sousuobuttonDiv {
 	float: left;
@@ -123,6 +130,7 @@ body {
 
 .sousuobuttonDiv a:hover {
 	background-color: #CE0029;
+	color: #FFF;
 }
 .menu_board_out {
 	background-color: #F03;
@@ -189,6 +197,9 @@ body {
 	color: #39C;
 	border: 1px solid #CCC;
 }
+.menu_board_out a:hover{
+color:#FFF;
+}
 
 .body_body {
 	background-color: #FAF1F4;
@@ -206,7 +217,7 @@ body {
 	float: left;
 	height: 390px;
 	width: 200px;
-	background-image: url(img/left_menu.png);
+	background-image: url(../img/left_menu.png);
 	background-repeat: no-repeat;
 }
 .lb_menu a {
@@ -316,15 +327,19 @@ a {
 .footer {
 	width: 1200px;
 	padding-top: 10px;
-	height: 100px;
+	height: 80px;
 	margin: auto;
 	color: #FFF;
 	text-align: center;
 }
 .footer_out {
 	width: 100%;
-	background-color: #666;
-	margin: auto;
+	background-color: #999;
+	float: left;
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 20px;
 }
 .list_out a:hover {
 	text-decoration: none;
@@ -341,4 +356,190 @@ img {
 	border-right-style: none;
 	border-bottom-style: none;
 	border-left-style: none;
+}
+.pf_menu {
+	position: absolute;
+	color: #FFF;
+	line-height: 30px;
+	text-align: center;
+	height: 390px;
+	width: 200px;
+	background-image: url(../img/left_menu.png);
+	background-repeat: no-repeat;
+	float: left;
+}
+.pf_menu  a {
+	color: #FFF;
+	text-decoration: none;
+	display: block;
+
+	height: 30px;
+	width: 200px;
+	line-height: 30px;
+	text-align: center;
+	
+}
+.pf_menu  a:hover {
+	background-color: #999;
+	color: #FFF;
+	
+}
+.body_list_menu {
+	background-color: #CCC;
+	margin: auto;
+	width: 1200px;
+	height: auto;
+}
+.list_body_out {
+	margin: auto;
+	width: 1200px;
+	background-color: #FFF;
+}
+.dangqianweizhi {
+	float: left;
+	height: 39px;
+	width: 1170px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	padding-left: 30px;
+	line-height: 40px;
+	background-color: #FFF;
+}
+.paixu_boday {
+	float: left;
+	width: 1170px;
+	height: 40px;
+	background-color: #F7F7F7;
+	line-height: 40px;
+	margin: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.paixu_boday .paixuwenzi {
+	text-align: center;
+	display: block;
+	float: left;
+	width: 100px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCC;
+}
+.paixu_boday .xiaoliang {
+	float: left;
+	width: 78px;
+	height: 40px;
+	text-align: center;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCC;
+}
+.yeshudiv {
+	line-height: 40px;
+	color: #999;
+	float: right;
+	height: 40px;
+	width: 100px;
+}
+.fontred {
+	color: #F03;
+}
+.shangpinListBody {
+	float: left;
+	width: 1160px;
+	background-color: #FFF;
+	padding-left: 40px;
+}
+.list_body_out .list_body2 {
+	float: left;
+	height: auto;
+	width: 1200px;
+	margin-bottom: 10px;
+	background-color: #FFF;
+	padding-bottom: 10px;
+}
+
+.list_boder {
+	width: 259px;
+	border: 1px solid #FFF;
+	float: left;
+	height: 390px;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+.list_boder .tu {
+	float: left;
+	height: 230px;
+	width: 230px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+.list_boder .shangpinname {
+	float: left;
+	height: 40px;
+	width: 230px;
+	margin-right: 14px;
+	margin-left: 15px;
+}
+.list_boder .jiage {
+	height: 30px;
+	width: 230px;
+	margin-right: 14px;
+	margin-left: 15px;
+	float: left;
+	color: #F03;
+}
+.list_boder .jiarugouwuche {
+	float: left;
+	height: 40px;
+	width: 230px;
+	margin-left: 15px;
+}
+.list_boder .gouwucheButton {
+	text-align: center;
+	display: block;
+	height: 30px;
+	width: 100px;
+	float: left;
+	line-height: 30px;
+	background-color: #E8002F;
+	color: #FFF;
+	border-radius:5px;
+}
+.list_boder .gouwucheButton:hover{
+	background-color: #F03;
+}
+.list_boder:hover {
+	border: 1px solid #F03;
+
+}
+.button {
+	font-size:24px;
+	color:#FFF;
+	width:200px;
+	height:50px;
+	background:#F00;
+border-radius:25px;
+border:0px;
+}
+.button:hover{
+	background:#09F;
+	}
+.button1 {
+	font-size:24px;
+	color:#FFF;
+	width:200px;
+	height:50px;
+	background:#FC0;
+border-radius:25px;
+border:0px;
+}
+.button1:hover{
+	background:#09F;
+	}
+
+
+a:hover{
+	color: #F03;
 }

@@ -96,9 +96,13 @@ public class addshangpinServlet extends HttpServlet {
 		String timeyujing = su.getRequest().getParameter("timeyujing");
 		String numberyujing = su.getRequest().getParameter("numberyujing");
 		String danwei = su.getRequest().getParameter("danwei");
+		String rukushuliang = su.getRequest().getParameter("rukushuliang");
+		Integer number = Integer.parseInt(rukushuliang);
+		Double jinjia = Double.parseDouble(su.getRequest().getParameter("jinjia"));
+		Double zongjine = Double.parseDouble(su.getRequest().getParameter("zongjine"));
 		String tupian= path+url;
 		AddshangpinManager shangpinmanager = new AddshangpinManager();
-		boolean bl = shangpinmanager.addShangPin(name, gongyingshang, shoujia, cuxiaojia, shengchanriqi, baozhiqi, leibie, miaoshu, guanjianci, timeyujing, numberyujing, danwei, tupian);
+		boolean bl = shangpinmanager.addShangPin(name, gongyingshang, shoujia, cuxiaojia, shengchanriqi, baozhiqi, leibie, miaoshu, guanjianci, timeyujing, numberyujing, danwei, tupian,number,jinjia,zongjine);
 		if(bl){
 		request.setAttribute("xinxi","添加成功");
 			request.getRequestDispatcher("/jsp/h_shangpin.jsp").forward(request, response);

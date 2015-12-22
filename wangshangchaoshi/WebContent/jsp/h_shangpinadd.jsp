@@ -38,7 +38,7 @@
 
 <body>
 
-<jsp:include page="../jsp/h_head.jsp"/>
+<jsp:include page="<%=request.getContextPath() %>/jsp/h_head.jsp"/>
 <!-- 顶部 -->     
             
 <div id="middle">
@@ -130,6 +130,20 @@ window.onload = function() {
   <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1">保质期</td>
   ：<td><input type="text" style=" margin-left: 20px;"value="" name="baozhiqi" name="baozhiqi" /> 天</td>
   </tr>
+  
+   <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1">入库数量</td>
+  ：<td><input type="text" style=" margin-left: 20px;"value="0" name="rukushuliangi" id="shuliang"/> </td>
+  </tr>
+  
+   <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1">进价</td>
+  ：<td><input type="text" style=" margin-left: 20px;"value="" name="jinjia" id="jinjia" onchange="onZongJinge();" />单价 </td>
+  </tr>
+  
+   <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1">总金额</td>
+  ：<td><input type="text" style=" margin-left: 20px;" value="" name="zongjine" id="zongjine"   /> 元</td>
+  </tr>
+  
+  
   <tr>
     <th align="right"  nowrap="nowrap" bgcolor="#f1f1f1" name="gongyingshang">供应商：</th>
     <td>
@@ -147,8 +161,8 @@ window.onload = function() {
     "></textarea></td>
   </tr>
   <tr>
-   <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 关键词：</th>
-    <td><input type="text" style=" margin-left: 20px;" value="" class="text" name="guanjianci"/> 多个关键词用英文下的逗号隔开</td>
+   <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 规格：</th>
+    <td><input type="text" style=" margin-left: 20px;" value="" class="text" name="guanjianci"/> </td>
   </tr>
     <th align="right" nowrap="nowrap" bgcolor="#f1f1f1"> 商品时间预警：</th>
     <td><p style="margin-left:20px">保质期剩余&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style=" margin-left: 0px; width:35px;" value="" class="text" name="timeyujing"/>
@@ -179,6 +193,15 @@ laydate({elem: '#Calendar2'});
 	 var file = document.getElementById('tupian');
 	 var img = document.getElementById('img');
 	 img.src=file.value;
+ }
+ function onZongJinge(){
+	 var jinjia = document.getElementById('jinjia').value;
+
+	 var shuliang  = document.getElementById('shuliang').value; 
+	 var result = jinjia*shuliang
+
+	 var zongjine = document.getElementById('zongjine');
+	 zongjine.value=result;
  }
  
 </script>

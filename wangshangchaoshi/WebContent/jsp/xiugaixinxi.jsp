@@ -15,46 +15,11 @@ import="java.util.List"%>
 
 <body>
 	<!-- 头部开始-->
-
-	<div class="head_top_outboard">
-		<div class="head_board">
-			<div class="denglu">
-				<span>欢迎来到XXX网上超市！</span>
-				<p>
-					<a href="#" class="a">登录 </a>/<a href="#" class="a"> 注册</a>
-				</p>
-			</div>
-			<div class="dingdan">
-				<a href="#">我的购物车</a>
-			</div>
-		</div>
-		<div class="logo_board">
-			<div class="logoDiv">
-				<a href="#"><img src="logo2.png" width="240" height="130" /></a>
-			</div>
-			<div class="sousuoDiv">
-				<div class="sousuo">
-					<form id="form1" name="form1" method="post" action="">
-						<input type="text" name="sousuo" id="sousuo" />
-					</form>
-				</div>
-				<div class="sousuobuttonDiv">
-					<a href="#">查找</a>
-				</div>
-			</div>
-			<div class="gouwucheDiv">
-				<a href="#" class="gouwucheButton">购物车(0)</a>
-			</div>
-		</div>
-
-	</div>
-	<p align="right">
-		<a href="#bottom" name="top" style="margin-right: 80px;"> To
-			Bottom 去底部 ↓</a>
+<%@ include file="head.jsp"%>
 	</p>
 	<!-- 头部结束-->
-	<div style="height: 50px; background-color: #F30"></div>
-	<div style="width: 1200px; margin-left: 100px;">
+
+<div style=" width:1200px; margin:auto;">
 
 		<div style="height: 500px;">
 			<div
@@ -116,9 +81,9 @@ function isnull(){
 				<center>
 					<table border="0" width="807">
 					<%
-					String User = "张三";  //得在上面加<%String User= (String)session.getAttribute("User"); 
+					String user = "张三";  //得在上面加<%String User= (String)session.getAttribute("User"); 
 						UserManager manager = new UserManager();
-						ArrayList<User> Onelist = manager.findinformation(User);
+						ArrayList<User> Onelist = manager.findinformation(user);
 					%>
 					<%
 						for (int i = 0; i < Onelist.size(); i++) {
@@ -160,8 +125,8 @@ function isnull(){
 
 						<tr>
 							<th style="height: 100px;"><p style="margin-top: 20px;">备注：</p></th>
-							<td><textarea style="width:400px; height:100px;" type="text" name="cremark" id="cremark"
-						style="width: 400px;" value="<%=Onelist.get(i).getBeizhu()%>"></textarea></td>
+							<td><input style="width:400px; height:100px;" type="text" name="cremark" id="cremark"
+						style="width: 400px;" value="<%=Onelist.get(i).getBeizhu()%>"/></td>
 						</tr>
 						<tr>
 							<td colspan="3" style="height: 25px;">
@@ -183,15 +148,7 @@ function isnull(){
 			<a href="#top" name="bottom" style="margin-right: 80px;">返回顶部 ↑</a>
 		</p>
 		<!-- 底部开始-->
-		<div class="footer_out" style="height: 150px;">
-			<div class="footer">
-				<br /> <img src="../购物车/cxds.jpg" width="128" height="48" /> <img
-					src="../购物车/scoba.jpg" width="128" height="48" /> <img
-					src="weiquan_1.jpg" width="128" height="48" /> <img
-					src="weiquan_2.jpg" width="128" height="48" /> <br />
-				<P>Copyright© xxx网上超市 2015-2016，All Rights Reserved</P>
-			</div>
-		</div>
+	<%@ include file="footer.jsp"%>
 		<!-- 底部结束-->
 </body>
 </html>

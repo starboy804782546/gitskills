@@ -10,7 +10,7 @@
 </head>
 <body   background="<%=request.getContextPath() %>/img/safadsgsfhej.jpg" >
 
-<div> <img  src="<%=request.getContextPath() %>/img/123123122312.png" style=" margin-left:175px; margin-top:100px; width:500px; height:400px;" />
+<div> <img  src="<%=request.getContextPath() %>/img/123123122312.png" style=" margin-left:150px; margin-top:100px; width:500px; height:400px;" />
 <script language="javascript">
 function onJudge(){
 
@@ -39,18 +39,39 @@ function namenull(){
 	}
 	return true;
 }
+function isLetterAndNum(){ 
+	var psd=document.form2.password.value;
+    var strExp=/^[0-9_a-zA-Z~!@#$%^&*()-_+=*/.,;:]{6,12}$/;
+   if(strExp.test(psd)){
+  return    true;
+}else{
+	alert("密码只能在6位与12位之间，由数字、字母、常用符号组成");
+ return   false;
+}
+}
+
+function phonenumber(){ 
+	var tel=document.getElementById('phonenumber').value;
+    var strExp=/^[0-9]*$/;
+   if(strExp.test(tel)){
+  return    true;
+}else{
+	alert("电话号只能是数字");
+ return   false;
+}
+}
 </script>
 <div style="margin-top:20px; margin-right:258px; width:400px; height:450px; "><%=request.getAttribute("xinxi")==null?"":request.getAttribute("xinxi") %></div>
 
-<form id="form2" name="form2" method="post" action="<%=request.getContextPath() %>/register" onsubmit="return isnull()&&onJudge()&&namenull();">
+<form id="form2" name="form2" method="post" action="<%=request.getContextPath() %>/register" onsubmit="return isnull()&&onJudge()&&namenull()&&isLetterAndNum()&&phonenumber();">
 
 
   <div class="cc_01" style="float:right; margin-top:20px; margin-right:258px; width:400px; height:450px; " >
 
-    <div  style=" margin-top:-350px; font-size:20px; margin-left:112px; "> 用户账号:<br/>
-     <!-- 
-    <div  style=" margin-top:10px; font-size:20px; margin-left:112px; "> 用户账号:<br/>
-     -->
+  <!-- <div  style=" margin-top:-350px; font-size:20px; margin-left:112px; "> 用户账号:<br/> -->  
+     
+    <div  style=" margin-top:-850px; font-size:20px; margin-left:112px; "> 用户账号:<br/>
+ 
       <input type="text" name="zhanghao" id="zhanghao" style=" width:300px; height:30px; "/></div>  
      
       

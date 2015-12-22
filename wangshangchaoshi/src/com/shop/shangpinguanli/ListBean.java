@@ -18,6 +18,27 @@ private String guanjiaci;
 private int timeYujing;
 private int numberYujing;
 private String danwei;
+private int danweiId;
+private int leibieId;
+private int gongyingshangId;
+public int getDanweiId() {
+	return danweiId;
+}
+public void setDanweiId(int danweiId) {
+	this.danweiId = danweiId;
+}
+public int getLeibieId() {
+	return leibieId;
+}
+public void setLeibieId(int leibieId) {
+	this.leibieId = leibieId;
+}
+public int getGongyingshangId() {
+	return gongyingshangId;
+}
+public void setGongyingshangId(int gongyingshangId) {
+	this.gongyingshangId = gongyingshangId;
+}
 public String getDanwei() {
 	return danwei;
 }

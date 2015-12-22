@@ -1,46 +1,29 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" pageEncoding="utf-8"
-import="java.util.List"%>
+<%@page import="com.shop.kehuziliao.KehuBean"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.shop.kehuziliao.KehuManager"%>
+<%@ page contentType="text/html; charset=utf-8" language="java"
+	import="java.sql.*" errorPage=""%>
+<%@page import="com.shop.shangpinguanli.ShangpinBean"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>个人中心——我的订单</title>
-<link href="<%=request.getContextPath() %>/style/index.css" rel="stylesheet" type="text/css" />
+<%@ include file="link.jsp"%>
 </head>
 
 <body>
 <!-- 头部开始-->
 
-<div class="head_top_outboard">
-  <div class="head_board">
-    <div class="denglu"><span>欢迎来到XXX网上超市！</span><p><a href="#" class="a">登录 </a>/<a href="#" class="a"> 注册</a></p></div>
-    <div class="dingdan"><a href="#">我的购物车</a></div>
-  </div>
-  <div class="logo_board">
-    <div class="logoDiv"><a href="#"><img  src="logo2.png" width="240" height="130" /></a></div>
-    <div class="sousuoDiv">
-      <div class="sousuo">
-        <form id="form1" name="form1" method="post" action="">
-          <input type="text" name="sousuo" id="sousuo" />
-        </form>
-      </div>
-      <div class="sousuobuttonDiv">
-        <a href="#">查找</a>
-      </div>
-    </div>
-    <div class="gouwucheDiv"><a href="#" class="gouwucheButton">购物车(0)</a></div>
-  </div>
-  
-</div>
-<p align="right"  ><a href="#bottom" name="top" style="margin-right:80px;"> To Bottom 去底部 ↓</a></p>
+<%@ include file="head.jsp"%>
 <!-- 头部结束-->
-<div style="height:50px; background-color:#F30"></div>
-<div style=" width:1200px; margin-left:100px;">
+
+<div style=" width:1200px; margin:auto;">
  
  
-<div style="height:500px;">
+<div style="height:500px; margin:auto;">
  <div   style="height:500px; width:200px; background-color:#CCC; float:left; "  >
-    <table width="200" border="1" cellpadding="5px"  cellspacing="1px;">
+    <table width="200" border="1" cellpadding="5px"  cellspacing="1px;" >
       <tr>
         <th><a name="wodegerenziliao" href="kehuziliao.jsp"><center><u>我的个人资料</u></center></a></th>
       </tr>
@@ -59,27 +42,82 @@ import="java.util.List"%>
 </div>
 <div>
 <center><table width="1000px"  border="1px" cellspacing="0px" cellpadding="0px">
-        <tr>
-          <th width="10%"><center>
-            订单号
-          </center></th>
-          <th width="25%" >商品名</th>
-          <th width="20%">收货地址</th>
-          <th  width="15%">收货人</th>
-          <th  width="15%">订单日期</th>
-          <th  width="15%">订单状态</th>
-        </tr>
-        <tr>
-          <td></td>
-          <td height="200px"><div style="width:250px; height:135px;  background-color:#6FF">图片</div>
-          <div style="height:65px; background-color:#6F3; width:250px;">文字</div></td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-       
-      </table>
+						
+						
+						<%
+						String user="user";
+						KehuManager manager = new KehuManager();
+						ArrayList AllOno = manager.getAllOno(user);  
+						
+						for (int i = 0; i < AllOno.size(); i++) {
+							
+							ArrayList Allorder = manager.getAllorder(((KehuBean) AllOno.get(i)).getOno());  
+							for (int j = 0; j < Allorder.size();j++) {
+								if(j==0){
+						%>
+						
+						<tr>
+							<th width="10%"><center>订单号</center></th>
+							<th width="25%">商品名</th>
+							<th width="7%">商品数量</th>
+							<th width="7%">商品单价</th>
+							<th width="10%">收货人</th>
+							<th width="15%">收货地址</th>
+							<th width="10%">订单日期</th>
+							<th width="8%">订单总金额</th>
+							<th width="8%">订单状态</th>
+						</tr>
+						<tr>
+							<td><center><%=((KehuBean) Allorder.get(j)).getOno() %></center></td>
+							<td height="150px"><div
+									style="width: 250px; height: 115px;"><img src="<%=((KehuBean) Allorder.get(j)).getTupian() %> " width="240"
+					height="130" /></div>
+							<div style="height: 35px; width: 250px;"><center><%=((KehuBean) Allorder.get(j)).getPname() %></center></div></td>
+							<td><center><%=((KehuBean) Allorder.get(j)).getPnumber()%></center></td>
+							<td><center><%=((KehuBean) Allorder.get(j)).getPjiage()%></center></td>
+							<td><center><%=((KehuBean) Allorder.get(j)).getCname()%></center></td>
+							<td><center><%=((KehuBean) Allorder.get(j)).getOaddress()%></center></td>
+							<td><center><%=((KehuBean) Allorder.get(j)).getOdate()%></center></td>
+							<td><center><%=((KehuBean) Allorder.get(j)).getOzongjine()%></center></td>
+							<%int zhuangtai1 = ((KehuBean) Allorder.get(j)).getOstate();
+                                    String zhuangtai;
+                                    if(zhuangtai1==1)
+                                    zhuangtai="已发货";
+                                    else if(zhuangtai1==2)
+                                    	zhuangtai="退货";
+                                    else if(zhuangtai1==3)
+                                    	zhuangtai="审核";
+                                    else 
+                                    	zhuangtai="未发货";
+                                    %>
+                                    <td><%=zhuangtai%></td>
+						</tr>
+						<%
+								}else{
+						
+						%>
+						<tr>
+							<td></td>
+							<td height="150px"><div
+									style="width: 250px; height: 115px;"><img src="<%=((KehuBean) Allorder.get(j)).getTupian() %> " width="240"
+					height="130" /></div>
+								<div style="height: 35px; width: 250px;"><center><%=((KehuBean) Allorder.get(j)).getPname() %></center></div></td>
+							<td><center><%=((KehuBean) Allorder.get(j)).getPnumber() %></center></td>
+							<td><center><%=((KehuBean) Allorder.get(j)).getPjiage()%></center></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+					
+					    <%
+								}
+							}
+						}
+						%>
+					</table>
       </center> 
       </div>
 
@@ -87,15 +125,9 @@ import="java.util.List"%>
 </div>
 
 
-<p align="right" ><a href="#top" name="bottom" style="margin-right:80px;">返回顶部 ↑</a></p>
+
 <!-- 底部开始-->
-<div class="footer_out" style="height:150px;">
-<div class="footer"><br/>
-  <img src="../购物车/cxds.jpg" width="128" height="48" />
-  <img  src="../购物车/scoba.jpg" width="128" height="48" />
-  <img src="weiquan_1.jpg" width="128" height="48" />
-  <img src="weiquan_2.jpg" width="128" height="48" /> <br /><P>Copyright© xxx网上超市 2015-2016，All Rights Reserved</P></div>
-</div>
+<%@ include file="footer.jsp"%>
 <!-- 底部结束-->
 </body>
 </html>

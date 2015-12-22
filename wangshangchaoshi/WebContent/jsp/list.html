@@ -1,0 +1,95 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>前台首页</title>
+<script type="text/javascript" src="../js/lrtk.js"></script>
+<link href="../style/index.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body,td,th {
+	font-family: "微软雅黑";
+}
+</style>
+<link href="../style/csslunbo.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="head_top_outboard">
+  <div class="head_board">
+    <div class="denglu"><span>欢迎来到XXX网上超市！</span><p><a href="#" class="a">登录 </a>/<a href="#" class="a"> 注册</a></p></div>
+    <div class="dingdan"><a href="<%=path %>/kehuziliao.jsp">个人中心</a></div>
+  </div>
+  <div class="logo_board">
+    <div class="logoDiv"><a href="#"><img src="../img/logo3.png" width="240" height="130" /></a></div>
+    <div class="sousuoDiv">
+      <div class="sousuo">
+        <form id="form1" name="form1" method="post" action="">
+          <input type="text" name="sousuo" id="sousuo" />
+        </form>
+      </div>
+      <div class="sousuobuttonDiv">
+        <a href="#">查找</a>
+      </div>
+    </div>
+    <div class="gouwucheDiv" id="goTop"><a href="#" class="gouwucheButton">购物车(0)</a></div>
+  </div>
+  
+</div>
+<div class="menu_board_out">
+  <div class="menu_board">
+    <div class="suoyoufenlei"><a href="#" class="sousuofenlei_a"  onmouseover="ddd('aa', 'show');" onmouseout="ddd('aa', 'hide');">所有分类<span class="span1">≡</span></a></div>
+  <a href="#" class="daohang">首页</a></div>
+</div>
+<div class="body_list_menu">
+
+<script> 
+function ddd(obj, sType) { 
+var oDiv = document.getElementById(obj); 
+if (sType == 'show') { oDiv.style.display = 'block';} 
+if (sType == 'hide') { oDiv.style.display = 'none';} 
+
+} 
+</script>
+  <div class="pf_menu" style="display:none;" id="aa" onmouseover="ddd('aa', 'show');" onmouseout="ddd('aa', 'hide');" >
+
+ <a href="#">小当家和大当家</a>
+    <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+        <a href="#">小当家和大当家</a>
+  </div>
+  </div>
+  
+  <!--body_start-->
+  <div class="list_body_out"><div class = "list_body2">
+    <div class="dangqianweizhi">当前位置：</div>
+<div class="paixu_boday">
+<span class="paixuwenzi"><strong>排序：</strong></span>
+<div class="xiaoliang"><a href="#">销量</a></div>
+<div class="xiaoliang"><a href="#">价格</a></div>
+<div class="yeshudiv">共<span class="fontred">70</span>个商品</div>
+</div>
+<!--shangpinList-->
+<div class="shangpinListBody">
+  <div class="list_boder">
+    <div class="tu"><a href="#"><img src="../upload/d46db589-c5a9-4b94-b813-55af9e89c0a0.png" width="230" height="230" /></a></div>
+    <div class="shangpinname">越南Tipo白巧克力面包干鸡蛋饼300k</div>
+    <div class="jiage">￥14.90</div>
+    <div class="jiarugouwuche"><a href="#" class="gouwucheButton">加入购物车</a></div>
+  </div>
+<!--shangpinList_end-->
+
+</div>
+<!--body_end--></div></div>
+  
+</body>
+</html>

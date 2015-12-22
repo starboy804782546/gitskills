@@ -22,56 +22,75 @@ import com.shop.shangpinguanli.SousuoBean;
 @WebServlet(name = "KucunServlet", urlPatterns = { "/KucunServlet" })
 public class ServletManager extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletManager() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);return;
-		
+	public ServletManager() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(request, response);
+		return;
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String path = request.getServletPath();
 		path = path.substring(1, path.length() - 6);
-	
+
 		switch (path) {
 		case "kucunsousuo":
-			kucunSouSuo(request,response);
-			
+			kucunSouSuo(request, response);
+
 			break;
 		case "addshuliang":
-			addShuLiang(request,response);
+			addShuLiang(request, response);
 		}
-		return ;
+		return;
 	}
 
-	private void addShuLiang(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void addShuLiang(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String id = request.getParameter("id");
+		String danwei = request.getParameter("danweiid");
 		int number = Integer.parseInt(request.getParameter("number"));
 		double jinjia = Double.parseDouble(request.getParameter("jinjia"));
-		double zongjine= Double.parseDouble(request.getParameter("zongjine"));
-		
-		String date = request.getParameter("riqi");
-		System.out.println(date);
-		System.out.println(id);
-		//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2013-07-29 10:52:00");
-		
+		double zongjine = Double.parseDouble(request.getParameter("zongjine"));
+		String leibie = request.getParameter("leibieid");
+		System.out.println("leibie"+leibie);
+		String gongyingshang = request.getParameter("gongyingshangid");
+
+		String riqi = request.getParameter("riqi");
+		String beizhu = request.getParameter("beizhu") == null ? "" : request.getParameter("beizhu");
+		String caozuoyuan = request.getParameter("caozuoyuan");
+		NumberShangpinManager manager = new NumberShangpinManager();
+		boolean bol = manager.addNumber(id, leibie, danwei, number, jinjia, zongjine, gongyingshang, riqi, beizhu, caozuoyuan);
+		if(bol){
+			request.setAttribute("xinxi", "添加成功");
+		}else
+			request.setAttribute("xinxi", "添加失败");
+		request.getRequestDispatcher("jsp/h_AddProductList.jsp").forward(request, response);
+		// new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2013-07-29
+		// 10:52:00");
+
 	}
 
-	private void kucunSouSuo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void kucunSouSuo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String fenlei = request.getParameter("fenlei");
 		String gongyingshang = request.getParameter("gongyingshang");
 		String sousuo = request.getParameter("sousuo");
@@ -93,8 +112,7 @@ public class ServletManager extends HttpServlet {
 				sousuobean.getSousuo());
 		request.setAttribute("jieguo", list);
 		request.getRequestDispatcher("jsp/h_AddProductList.jsp").forward(request, response);
-	
-		
+
 	}
 
 }

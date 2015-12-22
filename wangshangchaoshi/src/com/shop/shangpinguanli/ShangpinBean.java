@@ -2,19 +2,64 @@ package com.shop.shangpinguanli;
 
 public class ShangpinBean {
 String name;
+int number;
+public int getNumber() {
+	return number;
+}
+public void setNumber(int number) {
+	this.number = number;
+}
 int id;
 String leibie;
+int  leibieId;
+public void setLeibieId(int leibieId) {
+	this.leibieId = leibieId;
+}
+public void setGongyingshangId(int gongyingshangId) {
+	this.gongyingshangId = gongyingshangId;
+}
+public void setDanweiId(int danweiId) {
+	this.danweiId = danweiId;
+}
+int gongyingshangId;
+int danweiId;
 String miaoshu;
-String shoujia;
-String cuxiaojia;
+double shoujia;
+double cuxiaojia;
 String gongyingshang;
 String shengchanriqi;
-String baozhiqi;
+int baozhiqi;
 String guanjianci;
-String timeyujing;
-String numberyujing;
+int timeyujing;
+int numberyujing;
 String danwei;
 String tupian;
+
+public void setShoujia(double shoujia) {
+	this.shoujia = shoujia;
+}
+public double getShoujia() {
+	return shoujia;
+}
+public int getBaozhiqi() {
+	return baozhiqi;
+}
+public int getTimeyujing() {
+	return timeyujing;
+}
+public int getNumberyujing() {
+	return numberyujing;
+}
+public void setBaozhiqi(int baozhiqi) {
+	this.baozhiqi = baozhiqi;
+}
+public void setTimeyujing(int timeyujing) {
+	this.timeyujing = timeyujing;
+}
+public void setNumberyujing(int numberyujing) {
+	this.numberyujing = numberyujing;
+}
+
 public String getName() {
 	return name;
 }
@@ -39,16 +84,11 @@ public String getMiaoshu() {
 public void setMiaoshu(String miaoshu) {
 	this.miaoshu = miaoshu;
 }
-public String getShoujia() {
-	return shoujia;
-}
-public void setShoujia(String shoujia) {
-	this.shoujia = shoujia;
-}
-public String getCuxiaojia() {
+
+public double getCuxiaojia() {
 	return cuxiaojia;
 }
-public void setCuxiaojia(String cuxiaojia) {
+public void setCuxiaojia(double cuxiaojia) {
 	this.cuxiaojia = cuxiaojia;
 }
 public String getGongyingshang() {
@@ -63,30 +103,14 @@ public String getShengchanriqi() {
 public void setShengchanriqi(String shengchanriqi) {
 	this.shengchanriqi = shengchanriqi;
 }
-public String getBaozhiqi() {
-	return baozhiqi;
-}
-public void setBaozhiqi(String baozhiqi) {
-	this.baozhiqi = baozhiqi;
-}
+
 public String getGuanjianci() {
 	return guanjianci;
 }
 public void setGuanjianci(String guanjianci) {
 	this.guanjianci = guanjianci;
 }
-public String getTimeyujing() {
-	return timeyujing;
-}
-public void setTimeyujing(String timeyujing) {
-	this.timeyujing = timeyujing;
-}
-public String getNumberyujing() {
-	return numberyujing;
-}
-public void setNumberyujing(String numberyujing) {
-	this.numberyujing = numberyujing;
-}
+
 public String getDanwei() {
 	return danwei;
 }

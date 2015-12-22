@@ -20,7 +20,7 @@ public class Database {
 		try{
 			String url="jdbc:mysql://127.0.0.1:3306/chaoshi?characterEncoding=UTF-8";
 			String uname="root";
-			String passwd="spring";
+			String passwd="root";
 			con=DriverManager.getConnection(url,uname,passwd);
 			sta=con.createStatement();	
 		}catch(Exception e){

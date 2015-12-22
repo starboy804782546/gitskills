@@ -143,7 +143,7 @@ body .button {
 
 			}
 			if (bool == false) {
-				alert("请选择要删除的供应商名称");
+				alert("请选择要删除的入库单");
 				return false;
 			}
 			return true;
@@ -160,11 +160,11 @@ body .button {
 				<a href="#">首页</a>
 				<span class="divider">/</span>仓库管理
 				<a href="#"></a>
-				<span class="divider">/</span> 入库单
+				<span class="divider">/</span> 入库统计
 			</ul>
 
 			<div class="title_right">
-				<strong>入库单</strong>
+				<strong>入库统计</strong>
 			</div>
 		</div>
 		<!-- body_stat -->
@@ -172,9 +172,10 @@ body .button {
 
         </select>
      <form id="form2" name="form2" method="post"
-			action="<%=request.getContextPath()%>/jsp/h_supplier.jsp">
-	<span style="padding-left:10px;padding-right:10px;">搜索框</span>
-          <input name="sousuo" type="text" id="sousuo" style="width:200px; height:20px;"/>
+			action="<%=request.getContextPath()%>/jsp/h_rukulist.jsp">
+	<span style="padding-left:10px;padding-right:10px;">按日期进行搜索</span>
+          <input name="sousuo" type="text" id="sousuo" value="格式：2015-01-01" style="width:100px; height:20px;"/>——
+          <input name="sousuo2" type="text" id="sousuo2" style="width:100px; height:20px;"/>
           <input type="submit" value="搜索" />
         
 
@@ -183,7 +184,7 @@ body .button {
 		<div class="body">
 			<form id="form1" name="form1" method="post"
 				onsubmit="return zeroCheck();"
-				action="<%=request.getContextPath()%>/Delete.supplier">
+				action="<%=request.getContextPath()%>/deleteall">
 				
 				<div class="li">
 					<input type="submit" class="button" style="border: 0px;" value="删除">
@@ -197,8 +198,13 @@ body .button {
 						<tr></tr>
 
 						<%
-							RepertoryManager manager = new RepertoryManager();
-							ArrayList list = manager.getAll();
+						
+							if(request.getParameter("sousuo")== null||
+							    request.getParameter("sousuo").equals("")||
+							    request.getParameter("sousuo2")== null||
+									    request.getParameter("sousuo2").equals("")){
+								RepertoryManager manager = new RepertoryManager();
+								ArrayList list = manager.getAll();
 						%>
 
 
@@ -221,6 +227,7 @@ body .button {
 							<td><strong>入库备注</strong></td>
 							
 							 -->
+							<td><strong>入库日期</strong></td>
 							<td><strong>管理员名</strong></td>
 							
 							<td><strong>操作</strong></td>
@@ -229,7 +236,6 @@ body .button {
 						
 						<%
 							for (int i = 0; i < list.size(); i++) {
-								
 						%>
 						<tr>
 							<td><input type="checkbox" name="checkbox"
@@ -241,7 +247,7 @@ body .button {
 							<td><%=((RepertoryBean) list.get(i)).getPTname()%></td>
 							
 							<td><%=((RepertoryBean) list.get(i)).getSUname()%></td>
-							
+							<td><%=((RepertoryBean) list.get(i)).getRdate()%></td>
 							
 							<td><%=((RepertoryBean) list.get(i)).getAname()%></td>
 							
@@ -259,7 +265,77 @@ body .button {
 							}
 						%>
 						<tr>
-							<td colspan="11">第一页 1 2 3 4</td>
+							<td colspan="8">第一页 1 2 3 4</td>
+						</tr>
+					</table>
+					
+					<%
+						}
+						else{
+							String date1 = request.getParameter("sousuo");
+							String date2 = request.getParameter("sousuo2");
+							RepertoryManager manager = new RepertoryManager();
+							ArrayList list2 = manager.datefind(date1,date2) ;
+					%> 
+					<tr>
+							<td width="25" height="30"><strong> <input
+									type="checkbox" id="quanxuan" onclick="onquanxuan()" />
+							</strong></td>
+							<td ><strong>入库编号</strong></td>
+							<td ><strong>商品名</strong></td>
+							<td ><strong>类别名</strong></td>
+							<!-- 
+							
+							<td><strong>单位编号</strong></td>
+							<td><strong>入库数量</strong></td>
+							<td><strong>进价</strong></td>
+							<td><strong>总价</strong></td>
+							 -->
+							<td><strong>供应商名</strong></td>
+							<!-- 
+							<td><strong>入库备注</strong></td>
+							
+							 -->
+							<td><strong>入库日期</strong></td>
+							<td><strong>管理员名</strong></td>
+							
+							<td><strong>操作</strong></td>
+							
+						</tr>
+						
+						<%
+							for (int i = 0; i < list2.size(); i++) {
+						%>
+						<tr>
+							<td><input type="checkbox" name="checkbox"
+						
+							value="<%=((RepertoryBean) list2.get(i)).getRukuno()%>" /></td>
+							<td><%=((RepertoryBean) list2.get(i)).getRukuno()%></td>
+							<td><%=((RepertoryBean) list2.get(i)).getPname()%></td>
+							
+							<td><%=((RepertoryBean) list2.get(i)).getPTname()%></td>
+							
+							<td><%=((RepertoryBean) list2.get(i)).getSUname()%></td>
+							<td><%=((RepertoryBean) list2.get(i)).getRdate()%></td>
+							
+							<td><%=((RepertoryBean) list2.get(i)).getAname()%></td>
+							
+							
+							<td><a
+								href="<%=request.getContextPath()%>/jsp/h_rukulistxiangxi.jsp?id=<%=((RepertoryBean) list2.get(i)).getRukuno()%>"
+								class="button1">查看详细</a><span></span><a
+								href="<%=request.getContextPath()%>/rukulistdel?id=<%=((RepertoryBean) list2.get(i)).getRukuno()%>"
+								class="button1">删除</a>
+								
+								
+								</td>
+						</tr>
+						<%
+							}
+						}
+						%>
+						<tr>
+							<td colspan="8">第一页 1 2 3 4</td>
 						</tr>
 					</table>
 					
